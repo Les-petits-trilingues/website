@@ -1,0 +1,60 @@
+version: '3'
+
+services:
+  db:
+    image: mysql:5.7
+    networks:
+      - backend
+    environment:
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
+      MYSQL_DATABASE: wordpress
+      MYSQL_RANDOM_ROOT_PASSWORD: '1'
+
+  wordpress:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    networks:
+      - backend
+    depends_on:
+      - db
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_DEBUG: 1
+    volumes:
+      - type: volume
+        source: v_wp
+        target: /var/www/html
+        volume:
+          nocopy: false
+      - ./themes/lpt:/var/www/html/wp-content/themes/lpt
+
+  nginx:
+    image: nginx:alpine
+    depends_on:
+      - db
+      - wordpress
+    ports:
+      - 8000:80
+    networks:
+      - backend
+    volumes:
+      - type: volume
+        source: v_wp
+        target: /var/www/html
+        volume:
+          nocopy: true
+      - ./docker/nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./docker/nginx/conf.d:/etc/nginx/conf.d
+      - ./docker/nginx/nginxconfig.io:/etc/nginx/nginxconfig.io
+      - ./themes/lpt:/var/www/html/wp-content/themes/lpt
+
+networks:
+  backend:
+
+volumes:
+  v_wp: {}
