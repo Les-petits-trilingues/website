@@ -1,0 +1,16 @@
+{
+    "name": "les-petits-trilingues/website",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Élie Meignan",
+            "email": "contact@eliepse.fr"
+        }
+    ],
+    "require": {},
+    "autoload" : {
+        "psr-4" : {
+            "App\\": "src/"
+        }
+    }
+}
