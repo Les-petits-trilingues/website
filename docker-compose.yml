@@ -32,6 +32,7 @@ services:
         volume:
           nocopy: false
       - ./themes/lpt:/var/www/html/wp-content/themes/lpt
+      - ./themes/.env:/var/www/html/wp-content/themes/.env
 
   nginx:
     image: nginx:alpine
