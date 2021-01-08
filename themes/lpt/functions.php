@@ -30,3 +30,4 @@ if (! PluginsChecker::instance()->pass()) {
 		});
 	}
 }
+
