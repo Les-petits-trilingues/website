@@ -6,6 +6,17 @@ module.exports = {
 		filename: 'main.js',
 		path: path.resolve(__dirname, 'themes/lpt/assets/'),
 	},
+	devServer: {
+		index: '',
+		port: 3000,
+		hot: true,
+		overlay: true,
+		proxy: {
+			context: () => true,
+			target: "http://localhost:8000",
+			changeOrigin: true,
+		}
+	},
 	module: {
 		rules: [
 			{

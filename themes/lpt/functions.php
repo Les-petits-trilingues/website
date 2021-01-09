@@ -1,9 +1,9 @@
 <?php
 /** @noinspection PhpUndefinedFunctionInspection */
 
-use App\Support\Environment;
 use App\Core\PluginsChecker;
 use App\Core\Theme;
+use App\Support\Environment;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
@@ -31,3 +31,6 @@ if (! PluginsChecker::instance()->pass()) {
 	}
 }
 
+add_action('wp_enqueue_scripts', function () {
+	wp_enqueue_script('script-name', get_template_directory_uri() . '/assets/main.js', [], time(), true);
+});
