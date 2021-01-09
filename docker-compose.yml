@@ -27,14 +27,12 @@ services:
       WORDPRESS_DEBUG: 1
     volumes:
       - ./themes/lpt:/var/www/html/wp-content/themes/lpt
-      - ./themes/.env:/var/www/html/wp-content/themes/.env
 
   nginx:
     build:
       context: .
       dockerfile: docker/nginx/Dockerfile
     depends_on:
-      - db
       - wordpress
     ports:
       - 8000:80

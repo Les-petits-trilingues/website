@@ -5,7 +5,7 @@ use App\Support\Environment;
 use App\Core\PluginsChecker;
 use App\Core\Theme;
 
-require_once __DIR__ . '/vendor/autoload.php';
+require_once __DIR__ . '/../vendor/autoload.php';
 
 Environment::boot(__DIR__ . '/..');
 $theme = Theme::getInstance();
