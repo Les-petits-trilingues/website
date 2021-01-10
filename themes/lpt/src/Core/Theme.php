@@ -2,6 +2,8 @@
 
 namespace App\Core;
 
+use App\Support\Environment;
+
 final class Theme
 {
 	private static ?Theme $_instance = null;

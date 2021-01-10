@@ -28,3 +28,15 @@ if (! function_exists("env")) {
 		return Environment::get($key, $default);
 	}
 }
+
+if(! function_exists("asset")) {
+	/**
+	 * @param string $path
+	 *
+	 * @return string
+	 * @noinspection PhpUndefinedFunctionInspection
+	 */
+	function asset(string $path = "") {
+		return get_template_directory_uri() . "/assets/$path";
+	}
+}

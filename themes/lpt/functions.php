@@ -32,5 +32,6 @@ if (! PluginsChecker::instance()->pass()) {
 }
 
 add_action('wp_enqueue_scripts', function () {
-	wp_enqueue_script('script-name', get_template_directory_uri() . '/assets/main.js', [], time(), true);
+	$version = Theme::isLocal() ? time() : false;
+	wp_enqueue_script('script-name', get_template_directory_uri() . '/assets/main.js', [], $version, true);
 });
