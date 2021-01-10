@@ -31,7 +31,7 @@ if (! PluginsChecker::instance()->pass()) {
 	}
 }
 
-add_action('wp_enqueue_scripts', function () {
-	$version = Theme::isLocal() ? time() : false;
-	wp_enqueue_script('script-name', get_template_directory_uri() . '/assets/main.js', [], $version, true);
-});
+//add_action('wp_enqueue_scripts', function () {
+//	$version = Theme::isLocal() ? time() : false;
+//	wp_enqueue_script('script-name', '/wp-content/themes/lpt/assets/main.js', [], $version, true);
+//});

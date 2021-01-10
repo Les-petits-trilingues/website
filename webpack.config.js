@@ -10,6 +10,8 @@ module.exports = {
 		index: '',
 		port: 3000,
 		overlay: true,
+		contentBase: path.join(__dirname, 'themes/lpt/assets'),
+		publicPath: '/wp-content/themes/lpt/assets',
 		proxy: {
 			context: () => true,
 			target: "http://localhost:8000",

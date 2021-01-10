@@ -19,5 +19,6 @@
 <?= "LPT Theme"; ?>
 
 <?php wp_footer(); ?>
+<script src="<?= asset('main.js') ?>"></script>
 </body>
 </html>

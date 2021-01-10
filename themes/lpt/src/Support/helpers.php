@@ -34,9 +34,8 @@ if(! function_exists("asset")) {
 	 * @param string $path
 	 *
 	 * @return string
-	 * @noinspection PhpUndefinedFunctionInspection
 	 */
 	function asset(string $path = "") {
-		return get_template_directory_uri() . "/assets/$path";
+		return "/wp-content/themes/lpt/assets/$path";
 	}
 }
