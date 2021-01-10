@@ -9,7 +9,6 @@ module.exports = {
 	devServer: {
 		index: '',
 		port: 3000,
-		hot: true,
 		overlay: true,
 		proxy: {
 			context: () => true,

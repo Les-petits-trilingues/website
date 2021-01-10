@@ -45,4 +45,4 @@ networks:
   backend:
 
 volumes:
-  v_wp: {}
+  wp_uploads: {}
