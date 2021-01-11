@@ -1,0 +1,8 @@
+.placesList li:not(:first-child) {
+	margin-left:.375em;
+	&:before {
+		content: "-";
+		display: inline-block;
+		margin-right: .375em;
+	}
+}
