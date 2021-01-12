@@ -1,4 +1,5 @@
 const path = require('path');
+const BrowserSyncPlugin = require('browser-sync-webpack-plugin')
 
 module.exports = {
 	entry: './src/index.js',
@@ -8,7 +9,7 @@ module.exports = {
 	},
 	devServer: {
 		index: '',
-		port: 3000,
+		port: 3002,
 		overlay: true,
 		contentBase: path.join(__dirname, 'themes/lpt/assets'),
 		publicPath: '/wp-content/themes/lpt/assets',
@@ -36,5 +37,13 @@ module.exports = {
 				]
 			}
 		]
-	}
+	},
+	plugins: [
+		new BrowserSyncPlugin({
+			host: 'localhost',
+			port: 3000,
+			proxy: 'http://localhost:3002',
+			files: ["themes/lpt/**/*.php"]
+		})
+	]
 };
