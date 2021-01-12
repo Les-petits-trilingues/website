@@ -16,7 +16,7 @@ module.exports = {
 				DEFAULT: "#0da84a",
 			},
 			orange: {
-				DEFAULT: "#a6a531",
+				DEFAULT: "#F29833",
 			}
 		},
 		screens: {
@@ -27,8 +27,12 @@ module.exports = {
 			//'2xl': '1536px',
 		},
 		extend: {},
+		fontFamily: {
+			sans: ['"Source Han Sans SC"', '"Microsoft Yahei UI"', "sans-serif"]
+		}
 	},
 	variants: {
+		fontFamily: [],
 		extend: {},
 	},
 	plugins: [],
