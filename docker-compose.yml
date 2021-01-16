@@ -27,6 +27,7 @@ services:
       WORDPRESS_DEBUG: 1
     volumes:
       - ./themes/lpt:/var/www/html/wp-content/themes/lpt
+      - wp_uploads:/var/www/html/wp-content/uploads
 
   nginx:
     build:
@@ -40,6 +41,7 @@ services:
       - backend
     volumes:
       - ./themes/lpt:/var/www/html/wp-content/themes/lpt
+      - wp_uploads:/var/www/html/wp-content/uploads
 
 networks:
   backend:
