@@ -25,7 +25,7 @@ use App\Proxies\CoursePost;
 
 <main class="pb-24">
 	<section class="container m-auto">
-		<div class="mt-8 mb-16 max-w-2xl m-auto text-center">
+		<div class="mt-8 mb-16 max-w-2xl m-auto text-center sm:mt-32 sm:mb-36">
 			<img src="<?= asset('/images/logo-lpt.png') ?>"
 			     class="h-24 m-auto mb-8 sm:hidden"
 			     alt="Logo de LPT (Les Petits Trilingues)"
