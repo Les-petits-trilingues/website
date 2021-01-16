@@ -33,6 +33,25 @@ if (! PluginsChecker::instance()->pass()) {
 	}
 }
 
+if (PluginsChecker::instance()->isActivated("piklist")) {
+	add_filter('piklist_post_types', function (array $post_types = []): array {
+		$post_types["courses"] = [
+			"labels" => piklist("post_type_labels", "Courses pages"),
+			"menu_icon" => "dashicons-welcome-learn-more",
+			"menu_position" => 20,
+			"public" => false,
+			"show_ui" => true,
+			"supports" => ["title", "excerpt", "page-attributes", "post-formats"],
+			"delete_with_user" => false,
+			// Extended with Piklist
+			"title" => "Course name",
+			"hide_screen_options" => true,
+		];
+
+		return $post_types;
+	});
+}
+
 //add_action('wp_enqueue_scripts', function () {
 //	$version = Theme::isLocal() ? time() : false;
 //	wp_enqueue_script('script-name', '/wp-content/themes/lpt/assets/main.js', [], $version, true);
