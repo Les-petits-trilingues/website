@@ -57,22 +57,33 @@ use App\Proxies\CoursePost;
 		</div>
 	</section>
 	<section class="mx-4">
-		<h2 class="mt-16 mb-4 text-center font-bold text-4xl">课程介绍</h2>
-		<ul>
-			<?php foreach (CoursePost::fetchAll() as $course) : ?>
-			<li class="flex items-start flex-row-reverse border-b border-gray-300 py-10 md:block">
-				<img class="w-24 ml-6 md:m-auto md:mb-6 flex-none h-auto" src="<?= $course->getMeta("summup_image") ?>" role="presentation" alt=""/>
-				<div class="md:text-center flex-auto">
-					<h3 class="text-3xl font-bold mb-3 md:mb-5"><?= $course->getMeta("summup_title") ?></h3>
-					<p class="mb-6 md:mb-6"><?= $course->getMeta("summup_description") ?></p>
-					<a href="<?= $course->getLink() ?>"
-					   class="inline-block p-3 leading-none border border-black rounded-md
-					    hover:bg-gray-200 focus:bg-black focus:text-white"
-					>
-						了解更多
-					</a>
-				</div>
-			</li>
+		<h2 class="mt-16 sm:mt-32 mb-4 text-center font-bold text-4xl">课程介绍</h2>
+		<ul class="m-auto flex-wrap sm:max-w-4xl sm:flex">
+			<?php
+			$courses = CoursePost::fetchAll();
+			foreach ($courses as $index => $course) : ?>
+				<li
+					class="flex items-start flex-row-reverse flex-shrink-0 <?= $index < count($courses) - 1 ? "border-b" : "" ?>
+								 sm:border-0 border-gray-300 py-10 sm:block sm:w-1/3 sm:px-8"
+				>
+					<img
+						class="flex-none h-auto w-24 sm:max-h-20 sm:w-auto ml-6 sm:mx-auto sm:mb-6"
+						src="<?= $course->getMeta("summup_image") ?>"
+						role="presentation"
+						alt=""
+					/>
+					<div class="sm:text-center flex-auto">
+						<h3 class="text-3xl font-bold mb-3 sm:mb-5"><?= $course->getMeta("summup_title") ?></h3>
+						<p class="mb-6 sm:mb-6"><?= $course->getMeta("summup_description") ?></p>
+						<a
+							href="<?= $course->getLink() ?>"
+							class="inline-block p-3 leading-none border border-black rounded-md
+					           hover:bg-gray-200 focus:bg-black focus:text-white"
+						>
+							了解更多
+						</a>
+					</div>
+				</li>
 			<?php endforeach; ?>
 		</ul>
 	</section>
