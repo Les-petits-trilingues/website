@@ -67,4 +67,16 @@ final class PluginsChecker
 	{
 		return ! $this->hasMissing() && ! $this->hasUnactivated();
 	}
+
+
+	public function isInstalled(string $name): bool
+	{
+		return in_array($name, $this->installed, true);
+	}
+
+
+	public function isActivated(string $name): bool
+	{
+		return in_array($name, $this->activated, true);
+	}
 }
