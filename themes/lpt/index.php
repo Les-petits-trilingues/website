@@ -3,6 +3,11 @@
  * @noinspection PhpUndefinedFunctionInspection
  * @noinspection HtmlRequiredLangAttribute
  */
+
+/** @noinspection PhpUndefinedClassInspection */
+
+use App\Proxies\CoursePost;
+
 ?>
 <!doctype html>
 <html <?php language_attributes() ?>>
@@ -51,7 +56,26 @@
 			</figure>
 		</div>
 	</section>
-	<section></section>
+	<section class="mx-4">
+		<h2 class="mt-16 mb-4 text-center font-bold text-4xl">课程介绍</h2>
+		<ul>
+			<?php foreach (CoursePost::fetchAll() as $course) : ?>
+			<li class="flex items-start flex-row-reverse border-b border-gray-300 py-10 md:block">
+				<img class="w-24 ml-6 md:m-auto md:mb-6 flex-none h-auto" src="<?= $course->getMeta("summup_image") ?>" role="presentation" alt=""/>
+				<div class="md:text-center flex-auto">
+					<h3 class="text-3xl font-bold mb-3 md:mb-5"><?= $course->getMeta("summup_title") ?></h3>
+					<p class="mb-6 md:mb-6"><?= $course->getMeta("summup_description") ?></p>
+					<a href="<?= $course->getLink() ?>"
+					   class="inline-block p-3 leading-none border border-black rounded-md
+					    hover:bg-gray-200 focus:bg-black focus:text-white"
+					>
+						了解更多
+					</a>
+				</div>
+			</li>
+			<?php endforeach; ?>
+		</ul>
+	</section>
 </main>
 
 <?php wp_footer(); ?>
