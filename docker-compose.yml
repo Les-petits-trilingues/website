@@ -28,6 +28,7 @@ services:
     volumes:
       - ./themes/lpt:/var/www/html/wp-content/themes/lpt
       - wp_uploads:/var/www/html/wp-content/uploads
+      - wp_plugins:/var/www/html/wp-content/plugins
 
   nginx:
     build:
@@ -42,9 +43,11 @@ services:
     volumes:
       - ./themes/lpt:/var/www/html/wp-content/themes/lpt
       - wp_uploads:/var/www/html/wp-content/uploads
+      - wp_plugins:/var/www/html/wp-content/plugins
 
 networks:
   backend:
 
 volumes:
   wp_uploads: {}
+  wp_plugins: {}
