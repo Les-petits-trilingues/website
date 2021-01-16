@@ -15,17 +15,18 @@ if (! PluginsChecker::instance()->pass()) {
 	$checker = PluginsChecker::instance();
 
 	if ($checker->hasMissing()) {
-		add_action('admin_notices', function () {
+		add_action('admin_notices', function () use ($checker) {
 			echo '<div class="notice notice-error">' .
-					'<p>You must install those plugins: ' . join(", ", PluginsChecker::instance()->getMissing()) . '.</p>' .
+					'<p>You must install those plugins: ' . join(", ", $checker->getMissing()) . '.</p>' .
 					'</div>';
 		});
 	}
 
 	if ($checker->hasUnactivated()) {
-		add_action('admin_notices', function () {
+		add_action('admin_notices', function () use ($checker) {
+			$installedUnactivated = array_diff($checker->getUnactivated(), $checker->getMissing());
 			echo '<div class="notice notice-error">' .
-					'<p>You must activate those plugins: ' . join(", ", PluginsChecker::instance()->getUnactivated()) . '.</p>' .
+					'<p>You must activate those plugins: ' . join(", ", $installedUnactivated) . '.</p>' .
 					'</div>';
 		});
 	}
