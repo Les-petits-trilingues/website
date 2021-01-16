@@ -42,7 +42,7 @@ final class Theme
 
 	public function boot(): Theme
 	{
-		PluginsChecker::instance()->check();
+		PluginsChecker::instance()->boot();
 		return $this;
 	}
 }

@@ -9,8 +9,8 @@ final class PluginsChecker
 	private static ?PluginsChecker $_instance = null;
 
 	private array $required;
-	private array $missing = [];
-	private array $unactivated = [];
+	private array $installed = [];
+	private array $activated = [];
 
 
 	private function __construct()
@@ -29,47 +29,37 @@ final class PluginsChecker
 	}
 
 
-	public function check(): bool
+	/** @noinspection PhpUndefinedFunctionInspection */
+	public function boot(): bool
 	{
-		$plugins_folders = scandir(Theme::getInstance()->basePath() . '/../../plugins') ?: [];
-		$this->missing = array_diff($this->required, $plugins_folders);
-		/** @noinspection PhpUndefinedFunctionInspection */
-		$activated_folders = array_map(fn($path) => explode(DIRECTORY_SEPARATOR, $path)[0] ?? "", get_option('active_plugins', []));
-		$this->unactivated = array_diff($this->required, $activated_folders);
+		$this->installed = scandir(Theme::getInstance()->basePath() . '/../../plugins') ?: [];
+		$this->activated = array_map(fn($path) => explode(DIRECTORY_SEPARATOR, $path)[0] ?? "", get_option('active_plugins', []));
 
-		if ($this->hasMissing()) {
-			return false;
-		}
-
-		if ($this->hasUnactivated()) {
-			return false;
-		}
-
-		return true;
+		return ! $this->hasMissing() && ! $this->hasUnactivated();
 	}
 
 
 	public function hasMissing(): bool
 	{
-		return ! empty($this->missing);
+		return ! empty($this->getMissing());
 	}
 
 
 	public function getMissing(): array
 	{
-		return $this->missing;
+		return array_diff($this->required, $this->installed);
 	}
 
 
 	public function hasUnactivated(): bool
 	{
-		return ! empty($this->unactivated);
+		return ! empty($this->getUnactivated());
 	}
 
 
 	public function getUnactivated(): array
 	{
-		return $this->unactivated;
+		return array_diff($this->required, $this->activated);
 	}
 
 
