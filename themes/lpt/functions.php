@@ -52,6 +52,10 @@ if (PluginsChecker::instance()->isActivated("piklist")) {
 	});
 }
 
+add_action('after_setup_theme', function () {
+	register_nav_menu("primary", "Main navigation");
+});
+
 //add_action('wp_enqueue_scripts', function () {
 //	$version = Theme::isLocal() ? time() : false;
 //	wp_enqueue_script('script-name', '/wp-content/themes/lpt/assets/main.js', [], $version, true);
