@@ -2,7 +2,7 @@ version: '3'
 
 services:
   db:
-    image: mysql:5.7
+    image: mysql:8
     networks:
       - backend
     environment:
@@ -10,6 +10,8 @@ services:
       MYSQL_PASSWORD: wordpress
       MYSQL_DATABASE: wordpress
       MYSQL_RANDOM_ROOT_PASSWORD: '1'
+    volumes:
+    - mysql_db:/var/lib/mysql
 
   wordpress:
     build:
@@ -51,3 +53,4 @@ networks:
 volumes:
   wp_uploads: {}
   wp_plugins: {}
+  mysql_db: {}
