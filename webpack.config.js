@@ -2,10 +2,13 @@ const path = require('path');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const {WebpackManifestPlugin} = require('webpack-manifest-plugin');
+const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 
 module.exports = ({production}) => {
 	let module_css = [];
 	let plugins = [];
+
+	plugins.push(new CleanWebpackPlugin({cleanOnceBeforeBuildPatterns: ["*.js", "*.css", "manifest.json"]}));
 
 	if (production) {
 		plugins.push(new MiniCssExtractPlugin({filename: '[name].[contenthash:5].css'}));
