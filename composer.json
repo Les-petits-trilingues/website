@@ -7,16 +7,19 @@
             "email": "contact@eliepse.fr"
         }
     ],
+    "config" : {
+        "vendor-dir" : "wp-content/themes/vendor"
+    },
     "require": {
         "php": "^7.4",
         "vlucas/phpdotenv": "^5.2"
     },
     "autoload" : {
         "psr-4" : {
-            "App\\": "lpt/src/"
+            "App\\": "wp-content/themes/lpt/src/"
         },
         "files" : [
-            "lpt/src/Support/helpers.php"
+            "wp-content/themes/lpt/src/Support/helpers.php"
         ]
     }
 }
