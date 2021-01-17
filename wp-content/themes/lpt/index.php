@@ -7,6 +7,7 @@
 /** @noinspection PhpUndefinedClassInspection */
 
 use App\Proxies\CoursePost;
+use App\Support\Manifest;
 
 ?>
 <!doctype html>
@@ -90,6 +91,6 @@ use App\Proxies\CoursePost;
 </main>
 
 <?php wp_footer(); ?>
-<script src="<?= asset('main.js') ?>"></script>
+<script src="<?= asset(Manifest::instance()->getAsset("index.js")) ?>"></script>
 </body>
 </html>

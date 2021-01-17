@@ -1,6 +1,7 @@
 <?php
 
 use App\Support\Environment;
+use App\Support\Tree;
 
 if (! function_exists("dump")) {
 	function dump(...$params)
@@ -35,9 +36,31 @@ if (! function_exists("asset")) {
 	 *
 	 * @return string
 	 */
-	function asset(string $path = "")
+	function asset(string $path = ""): string
 	{
 		return "/wp-content/themes/lpt/assets/$path";
+	}
+}
+
+if (! function_exists("webpack")) {
+	/**
+	 * @param string $path Path to asset file (relative to assets folder)
+	 * @param string|null $default Fallback filepath if not present in manifest
+	 *
+	 * @return string
+	 * @todo(eliepse): use a singleton to prevent multiple read on filesystem
+	 */
+	function webpack(string $path, string $default = null): string
+	{
+		$manifestPath = Tree::assets("manifest.json");
+
+		if (! file_exists($manifestPath)) {
+			return asset($default ?? $path);
+		}
+
+		$manifest = json_decode(file_get_contents($manifestPath) ?? "{}", true);
+
+		return ! empty ($manifest[$path]) ? asset($manifest[$path]) : asset($path);
 	}
 }
 
@@ -54,10 +77,10 @@ if (! function_exists("getThemeMenu")) {
 			return [];
 		}
 
-		if (! isset($locations[ $location ])) {
+		if (! isset($locations[$location])) {
 			return [];
 		}
 
-		return wp_get_nav_menu_items($locations[ $location ]);
+		return wp_get_nav_menu_items($locations[$location]);
 	}
 }

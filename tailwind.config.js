@@ -1,8 +1,32 @@
 const colors = require("tailwindcss/colors");
 
 module.exports = {
-	purge: ["./themes/lpt/index.php"],
+	purge: ["wp-content/themes/lpt/index.php"],
 	darkMode: false, // or 'media' or 'class'
+	corePlugins: {
+		transform: false,
+		transformOrigin: false,
+		transitionDelay: false,
+		transitionDuration: false,
+		transitionProperty: false,
+		transitionTimingFunction: false,
+		translate: false,
+		rotate: false,
+		scale: false,
+		skew: false,
+		gridAutoColumns: false,
+		gridAutoFlow: false,
+		gridAutoRows: false,
+		gridColumn: false,
+		gridColumnEnd: false,
+		gridColumnStart: false,
+		gridRow: false,
+		gridRowEnd: false,
+		gridRowStart: false,
+		gridTemplateColumns: false,
+		gridTemplateRows: false,
+		gap: false,
+	},
 	theme: {
 		colors: {
 			black: "#000000",
@@ -22,7 +46,7 @@ module.exports = {
 		screens: {
 			sm: '640px',
 			md: '768px',
-			lg: '1024px',
+			//lg: '1024px',
 			//xl: '1280px',
 			//'2xl': '1536px',
 		},
