@@ -8,7 +8,7 @@ module.exports = ({production}) => {
 	let plugins = [];
 
 	if (production) {
-		plugins.push(new MiniCssExtractPlugin({filename: '[name].[hash:5].css'}));
+		plugins.push(new MiniCssExtractPlugin({filename: '[name].[contenthash:5].css'}));
 		plugins.push(new WebpackManifestPlugin({}));
 	}
 
@@ -19,7 +19,7 @@ module.exports = ({production}) => {
 			index: './src/index.js',
 		},
 		output: {
-			filename: production ? '[name].[hash:5].js' : '[name].js',
+			filename: production ? '[name].[contenthash:5].js' : '[name].js',
 			path: path.resolve(__dirname, 'wp-content/themes/lpt/assets/'),
 			publicPath: "",
 		},
