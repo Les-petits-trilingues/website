@@ -29,13 +29,35 @@ if (! function_exists("env")) {
 	}
 }
 
-if(! function_exists("asset")) {
+if (! function_exists("asset")) {
 	/**
 	 * @param string $path
 	 *
 	 * @return string
 	 */
-	function asset(string $path = "") {
+	function asset(string $path = "")
+	{
 		return "/wp-content/themes/lpt/assets/$path";
+	}
+}
+
+if (! function_exists("getThemeMenu")) {
+	/**
+	 * @return object[]
+	 * @noinspection PhpUndefinedFunctionInspection
+	 */
+	function getThemeMenu(string $location): array
+	{
+		$locations = get_theme_mod('nav_menu_locations');
+
+		if (empty($locations)) {
+			return [];
+		}
+
+		if (! isset($locations[ $location ])) {
+			return [];
+		}
+
+		return wp_get_nav_menu_items($locations[ $location ]);
 	}
 }
