@@ -14,7 +14,7 @@ services:
   wordpress:
     build:
       context: .
-      dockerfile: docker/Dockerfile
+      dockerfile: docker/wordpress/Dockerfile
     networks:
       - backend
     depends_on:
