@@ -42,7 +42,7 @@ if (PluginsChecker::instance()->isActivated("piklist")) {
 			"menu_position" => 20,
 			"public" => false,
 			"show_ui" => true,
-			"supports" => ["title", "excerpt", "page-attributes", "post-formats"],
+			"supports" => ["title", "page-attributes", "post-formats"],
 			"delete_with_user" => false,
 			// Extended with Piklist
 			"title" => "Course name",
