@@ -10,6 +10,11 @@ use WP_Query;
  * Class CoursePost
  *
  * @package App\Proxies
+ *
+ * @property-read string $summup_title
+ * @property-read string $summup_description
+ * @property-read string $summup_image
+ * @property-read string[] $caracteristics
  */
 final class CoursePost extends PostProxy
 {
