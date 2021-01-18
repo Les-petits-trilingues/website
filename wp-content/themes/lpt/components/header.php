@@ -1,6 +1,6 @@
 <header
 	class="fixed h-16 px-4 inset-x-0 bottom-0 bg-white container mx-auto flex justify-between border-t-2 border-gray-200
-			   sm:h-auto sm:border-0 sm:mt-6 sm:relative sm:bg-beige-light sm:shadow-none"
+			   z-30 sm:h-auto sm:border-0 sm:mt-6 sm:relative sm:bg-beige-light sm:shadow-none"
 >
 	<div class="hidden sm:block">
 		<a href="/">
