@@ -40,8 +40,7 @@ if (PluginsChecker::instance()->isActivated("piklist")) {
 			"labels" => piklist("post_type_labels", "Courses pages"),
 			"menu_icon" => "dashicons-welcome-learn-more",
 			"menu_position" => 20,
-			"public" => false,
-			"show_ui" => true,
+			"public" => true,
 			"supports" => ["title", "page-attributes", "post-formats"],
 			"delete_with_user" => false,
 			// Extended with Piklist
