@@ -1,0 +1,15 @@
+.course-caracteristicsList {
+	@apply mx-6 mb-12;
+
+	li {
+		@apply align-middle leading-5 mb-6;
+	}
+}
+
+@screen sm {
+	.course-caracteristicsList li:before {
+		content: "▶";
+		color: #1E4B73;
+		@apply inline-block mr-3 text-xl align-middle;
+	}
+}

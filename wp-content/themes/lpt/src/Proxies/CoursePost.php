@@ -14,7 +14,10 @@ use WP_Query;
  * @property-read string $summup_title
  * @property-read string $summup_description
  * @property-read string $summup_image
+ * @property-read string $subtitle
  * @property-read string[] $caracteristics
+ * @property-read array<string, string> $price
+ * @property-read string $headerImage
  */
 final class CoursePost extends PostProxy
 {
