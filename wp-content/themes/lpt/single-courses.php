@@ -6,7 +6,6 @@
  */
 
 use App\Proxies\CoursePost;
-
 if (have_posts()):
 	the_post();
 	$course = new CoursePost($post);
@@ -21,7 +20,7 @@ if (have_posts()):
 			<h1 class="text-5xl font-bold mb-4 md:text-6xl"><?= wp_title("") ?></h1>
 			<p class="mb-12 text-2xl">出口成章 下笔有神</p>
 			<ul class="mx-6 md:mx-0 mb-12">
-				<?php foreach ($course->getMeta("caracteristics") as $key => $caracteristic) : ?>
+				<?php foreach ($course->caracteristics as $key => $caracteristic) : ?>
 					<li class="mb-6"><?= $caracteristic ?></li>
 				<?php endforeach; ?>
 			</ul>

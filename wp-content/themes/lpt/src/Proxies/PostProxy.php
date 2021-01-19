@@ -51,8 +51,12 @@ class PostProxy
 
 	public function __get($name)
 	{
-		if (isset($this->post->$name)) {
+		if (property_exists($this->post, $name)) {
 			return $this->post->$name;
+		}
+
+		if (! property_exists($this, $name)) {
+			return $this->getMeta($name);
 		}
 
 		return $this->$name;
