@@ -55,11 +55,11 @@ class PostProxy
 			return $this->post->$name;
 		}
 
-		if (! property_exists($this, $name)) {
+		if (! property_exists($this, $name) && $this->hasMeta($name)) {
 			return $this->getMeta($name);
 		}
 
-		return $this->$name;
+		return $this->$name ?? null;
 	}
 
 
@@ -72,13 +72,23 @@ class PostProxy
 	}
 
 
+	public function hasMeta(string $id)
+	{
+		if (! $this->isMetasLoaded) {
+			$this->loadMetas();
+		}
+
+		return isset($this->metas[$id]);
+	}
+
+
 	public function getMeta(string $id)
 	{
 		if (! $this->isMetasLoaded) {
 			$this->loadMetas();
 		}
 
-		return $this->metas[ $id ] ?? null;
+		return $this->metas[$id] ?? null;
 	}
 
 
