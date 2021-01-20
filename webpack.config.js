@@ -64,7 +64,7 @@ module.exports = ({production}) => {
 				host: 'localhost',
 				port: 3000,
 				proxy: 'http://localhost:3002',
-				files: ["themes/lpt/**/*.php"]
+				files: ["wp-content/themes/lpt/**/*.php"]
 			})
 		]
 	};
