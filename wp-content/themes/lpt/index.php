@@ -53,7 +53,7 @@ use App\Proxies\CoursePost;
 			</div>
 		</div>
 	</section>
-	<section class="pt-8 pb-24 px-4 bg-green-light">
+	<section class="pt-8 px-4 bg-green-light">
 		<h2 class="sm:mt-32 mb-4 text-center font-bold text-4xl">课程介绍</h2>
 		<ul class="m-auto flex-wrap sm:max-w-4xl sm:flex">
 			<?php
@@ -84,6 +84,40 @@ use App\Proxies\CoursePost;
 			<?php endforeach; ?>
 		</ul>
 	</section>
+	<section class="px-4 bg-green-light overflow-hidden">
+    <h2 class="container m-auto sm:mt-32 mb-4 text-center font-bold text-4xl">联系我们</h2>
+		<div class="container m-auto sm:flex flex-row">
+			<div class="flex-auto w-1/2 sm:mr-4">
+				<h3 class="mt-12 mb-4 font-bold text-2xl">地址</h3>
+				<ul>
+					<li class="mb-4 sm:mb-8">
+						LPT - Place d'italie<br>161 Avenue de Choisy, 75013 Paris
+					</li>
+					<li class="mb-4 sm:mb-8">
+						LPT - Belleville<br>53 Rue Rebeval, 75019 Paris
+					</li>
+					<li class="mb-4 sm:mb-8">
+						LPT - Aubervilliers<br>87 Avenue Victor Hugo, 93300 Aubervilliers
+					</li>
+				</ul>
+			</div>
+			<div class="flex-auto w-1/2 sm:ml-4">
+				<h3 class="mt-12 mb-4 font-bold text-2xl">电话</h3>
+				<ul>
+					<li class="mb-4">Sonia: +33 6 27 35 04 35</li>
+					<li class="mb-4">NingNing: +33 6 65 56 57 78</li>
+				</ul>
+				<h3 class="mt-12 mb-4 font-bold text-2xl">微信</h3>
+				<p class="mb-4">Sonia-in-Paris ou LPT-Paris</p>
+				<h3 class="mt-12 mb-4 font-bold text-2xl">电子邮件</h3>
+				<ul>
+					<li class="mb-4">soniazhao.qd@gmail.com</li>
+					<li class="mb-4">lespetitstrilingues.paris@gmail.com</li>
+				</ul>
+			</div>
+		</div>
+	</section>
+	<footer class="pb-24 bg-green-light"></footer>
 </main>
 
 <?php include "components/footer.php" ?>
