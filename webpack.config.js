@@ -8,6 +8,9 @@ module.exports = ({production}) => {
 	let module_css = [];
 	let plugins = [];
 
+	// Fix for webpack not setting NODE_ENV, preventing tailwind from purging css
+	process.env.NODE_ENV = production ? "production" : "development";
+
 	plugins.push(new CleanWebpackPlugin({cleanOnceBeforeBuildPatterns: ["*.js", "*.css", "manifest.json"]}));
 
 	if (production) {

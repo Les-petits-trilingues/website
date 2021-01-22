@@ -1,7 +1,9 @@
 const colors = require("tailwindcss/colors");
 
 module.exports = {
-	purge: ["wp-content/themes/lpt/index.php"],
+	purge: {
+		content: ["./wp-content/themes/lpt/**/*.php"],
+	},
 	darkMode: false, // or 'media' or 'class'
 	corePlugins: {
 		transform: false,
@@ -40,7 +42,7 @@ module.exports = {
 				DEFAULT: "#0da84a",
 			},
 			orange: {
-				DEFAULT: "#F29833",
+				DEFAULT: "#f29833",
 			}
 		},
 		screens: {
