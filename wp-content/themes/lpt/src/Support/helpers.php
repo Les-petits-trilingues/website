@@ -7,7 +7,18 @@ if (! function_exists("dump")) {
 	function dump(...$params)
 	{
 		foreach (func_get_args() as $arg) {
-			echo "<pre style='border: 1px solid #e6e6e6; border-radius: 4px; background: #f6f6f6; padding: 1.5em;margin: 1em 0;'>";
+			$styles = [
+				"border: 1px solid #e6e6e6",
+				"border-radius: 4px",
+				"background: #f6f6f6",
+				"padding: 1.5em",
+				"margin: 1em 0",
+				"color: #292929",
+			];
+			// Transform the array of styles into a CSS string
+			$styles_str = join(";", $styles);
+
+			echo "<pre style='$styles_str'>";
 			var_dump($arg);
 			echo "</pre>";
 		}
