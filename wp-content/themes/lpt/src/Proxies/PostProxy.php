@@ -72,13 +72,19 @@ class PostProxy
 	}
 
 
-	public function hasMeta(string $id)
+	public function hasMeta(string $id): bool
 	{
 		if (! $this->isMetasLoaded) {
 			$this->loadMetas();
 		}
 
 		return isset($this->metas[$id]);
+	}
+
+
+	public function hasParent(): bool
+	{
+		return $this->post_parent !== 0;
 	}
 
 
