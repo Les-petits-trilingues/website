@@ -117,7 +117,6 @@ use App\Proxies\CoursePost;
 			</div>
 		</div>
 	</section>
-	<footer class="pb-24 bg-green-light"></footer>
 </main>
 
 <?php include "components/footer.php" ?>

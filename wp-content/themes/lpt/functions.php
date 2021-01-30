@@ -43,9 +43,10 @@ if (PluginsChecker::instance()->isActivated("piklist")) {
 			"public" => true,
 			"supports" => ["title", "page-attributes", "post-formats"],
 			"delete_with_user" => false,
+			'show_in_nav_menus' => true,
 			// Extended with Piklist
 			"title" => "Course name",
-			"hide_screen_options" => true,
+//			"hide_screen_options" => true,
 		];
 
 		return $post_types;
@@ -53,7 +54,11 @@ if (PluginsChecker::instance()->isActivated("piklist")) {
 }
 
 add_action('after_setup_theme', function () {
-	register_nav_menu("primary", "Main navigation");
+	register_nav_menus([
+		"primary" => "Main navigation",
+		"adresses" => "Offices and schools addresses",
+		"contacts" => "Contact links, phones, etc.",
+	]);
 });
 
 add_action('wp_enqueue_scripts', function () {
