@@ -1,5 +1,6 @@
 <?php
 
+use App\Proxies\MenuItem;
 use App\Support\Environment;
 use App\Support\Tree;
 
@@ -77,11 +78,15 @@ if (! function_exists("webpack")) {
 
 if (! function_exists("getThemeMenu")) {
 	/**
-	 * @return object[]
+	 * @param string $location
+	 *
+	 * @return array<int, MenuItem>
 	 * @noinspection PhpUndefinedFunctionInspection
 	 */
 	function getThemeMenu(string $location): array
 	{
+		// We fetch the available menu location to check if
+		// the request location is valid, and get menus ids
 		$locations = get_theme_mod('nav_menu_locations');
 
 		if (empty($locations)) {
@@ -92,6 +97,40 @@ if (! function_exists("getThemeMenu")) {
 			return [];
 		}
 
-		return wp_get_nav_menu_items($locations[$location]);
+		// We fetch the menu items for the requested location, and wrap
+		// them inside MenuItem to make them easier to manipulate
+		$wpMenuItems = wp_get_nav_menu_items($locations[$location]);
+		$proxiedMenuItems = array_map(fn($item) => new MenuItem($item), $wpMenuItems);
+
+		// We use the items ID as array keys. That way, we will be
+		// able to easily create relations between items.
+		/** @var array<int, MenuItem> $menuItems */
+		$menuItems = array_combine(
+			array_map(fn($menuItem) => $menuItem->ID, $proxiedMenuItems),
+			$proxiedMenuItems
+		);
+
+		if (empty($menuItems)) {
+			return [];
+		}
+
+		// Adds the parent <- child (menu <- sub-menu) relation between menu items.
+		foreach ($menuItems as $menuItem) {
+			if (! $menuItem->hasParent()) {
+				continue;
+			}
+
+			if (! $parent = $menuItems[intval($menuItem->menu_item_parent)]) {
+				// TODO(eliepse): add an error, or a warning about the fact there is no valid parent in the nav menu list.
+				continue;
+			}
+
+			$parent->addChildren($menuItem);
+		}
+
+		// Before returning, we only keep the top-level element.
+		// Any children (sub-menu) is kept inside them as a descendant.
+		// The menu tree has been reconstructed (or "un-flatten").
+		return array_filter($menuItems, fn($menuItem) => ! $menuItem->hasParent());
 	}
 }
