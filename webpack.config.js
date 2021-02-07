@@ -52,14 +52,25 @@ module.exports = ({production}) => {
 						{
 							loader: 'css-loader',
 							options: {
+								sourceMap: !production,
 								importLoaders: 1,
-							}
+							},
 						},
-						'postcss-loader',
-						'sass-loader',
-					]
-				}
-			]
+						{
+							loader: 'postcss-loader',
+							options: {
+								sourceMap: !production,
+							},
+						},
+						{
+							loader: 'sass-loader',
+							options: {
+								sourceMap: !production,
+							},
+						},
+					],
+				},
+			],
 		},
 		plugins: [
 			...plugins,
