@@ -12,14 +12,14 @@ use App\Proxies\CoursePost;
 <!doctype html>
 <html <?php language_attributes() ?>>
 <?php include "components/head.php" ?>
-<body <?php body_class(['bg-beige-light font-sans bg-no-repeat bg-center bg-top']); ?>
-	style="background-image: url(<?= asset("images/bg-1.svg") ?>); background-size: 100%;"
+<body <?php body_class(['homepage font-sans bg-no-repeat bg-center bg-top']); ?>
+	style="background-image: url(<?= asset("images/bg-1.svg") ?>)"
 >
 
 <?php include "components/header.php" ?>
 
 <main>
-	<section class="slantedBackground pb-8">
+	<section class="pb-8">
 		<div class="container m-auto">
 			<div class="mt-8 mb-16 max-w-2xl m-auto text-center sm:mt-32 sm:mb-36">
 				<img src="<?= asset('/images/logo-lpt.png') ?>"
@@ -34,9 +34,27 @@ use App\Proxies\CoursePost;
 					<li class="inline-block">Aubervilliers</li>
 				</ul>
 				<p class="px-4 mb-14">
-					LPT三语宝贝于2014年成立于法国巴黎，有20多位来自中法美三国的老师，我们已成长为法国知名的教育机构，获得逾千名学生和家长的信赖。
+					我们来自法国巴黎，是一所致力于<strong class="text-red">中英法</strong>三语教学的国际语言学校。
 				</p>
-				<a href="#" class="inline-block rounded-xl bg-orange text-white px-8 py-3">
+				<ul class="flex flex-wrap text-center mb-8 px-4">
+					<li class="w-1/2 sm:w-1/4 mb-8">
+						<span class="text-red font-bold text-xl">7</span>年<br>
+						三语教学经验
+					</li>
+					<li class="w-1/2 sm:w-1/4 mb-8">
+						<span class="text-red font-bold text-xl">25</span>名<br>
+						主力中美法老师
+					</li>
+					<li class="w-1/2 sm:w-1/4 mb-8">
+						<span class="text-red font-bold text-xl">160+</span><br>
+						中英美夏令营营员
+					</li>
+					<li class="w-1/2 sm:w-1/4 mb-8">
+						<span class="text-red font-bold text-xl">1&nbsp;000+</span><br>
+						在校学员/年
+					</li>
+				</ul>
+				<a href="#" class="inline-block rounded-xl bg-orange text-xl text-white px-6 py-2">
 					开始注册
 				</a>
 			</div>
@@ -53,7 +71,7 @@ use App\Proxies\CoursePost;
 			</div>
 		</div>
 	</section>
-	<section class="pt-8 px-4 bg-green-light">
+	<section class="pt-8 px-4">
 		<h2 class="sm:mt-32 mb-4 text-center font-bold text-4xl">课程介绍</h2>
 		<ul class="m-auto flex-wrap sm:max-w-4xl sm:flex">
 			<?php
@@ -84,40 +102,9 @@ use App\Proxies\CoursePost;
 			<?php endforeach; ?>
 		</ul>
 	</section>
-	<section class="px-4 bg-green-light overflow-hidden">
-    <h2 class="container m-auto sm:mt-32 mb-4 text-center font-bold text-4xl">联系我们</h2>
-		<div class="container m-auto sm:flex flex-row">
-			<div class="flex-auto w-1/2 sm:mr-4">
-				<h3 class="mt-12 mb-4 font-bold text-2xl">地址</h3>
-				<ul>
-					<li class="mb-4 sm:mb-8">
-						LPT - Place d'italie<br>161 Avenue de Choisy, 75013 Paris
-					</li>
-					<li class="mb-4 sm:mb-8">
-						LPT - Belleville<br>53 Rue Rebeval, 75019 Paris
-					</li>
-					<li class="mb-4 sm:mb-8">
-						LPT - Aubervilliers<br>87 Avenue Victor Hugo, 93300 Aubervilliers
-					</li>
-				</ul>
-			</div>
-			<div class="flex-auto w-1/2 sm:ml-4">
-				<h3 class="mt-12 mb-4 font-bold text-2xl">电话</h3>
-				<ul>
-					<li class="mb-4">Sonia: +33 6 27 35 04 35</li>
-					<li class="mb-4">NingNing: +33 6 65 56 57 78</li>
-				</ul>
-				<h3 class="mt-12 mb-4 font-bold text-2xl">微信</h3>
-				<p class="mb-4">Sonia-in-Paris ou LPT-Paris</p>
-				<h3 class="mt-12 mb-4 font-bold text-2xl">电子邮件</h3>
-				<ul>
-					<li class="mb-4">soniazhao.qd@gmail.com</li>
-					<li class="mb-4">lespetitstrilingues.paris@gmail.com</li>
-				</ul>
-			</div>
-		</div>
-	</section>
 </main>
+
+<img class="w-full mt-16" src="<?= asset("images/illustration-lpt-party.jpg") ?>" alt="" role="presentation">
 
 <?php include "components/footer.php" ?>
 </body>

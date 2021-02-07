@@ -43,6 +43,9 @@ module.exports = {
 			},
 			orange: {
 				DEFAULT: "#f29833",
+			},
+			red: {
+				DEFAULT: "#D42F2A",
 			}
 		},
 		screens: {

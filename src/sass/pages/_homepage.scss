@@ -1,3 +1,7 @@
+.homepage {
+	//background-size: cover;
+}
+
 .placesList li:not(:first-child) {
 	margin-left: .375em;
 
@@ -9,6 +13,10 @@
 }
 
 @screen sm {
+	.homepage {
+		background-size: 100%;
+	}
+
 	.slantedBackground {
 		background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMTUyIiBoZWlnaHQ9IjMzMCIgZmlsbD0iI0MxRUJENSI+PHBhdGggZD0iTTExNTIgMEwwIDEwMy44djIyNS43aDExNTJWMHoiLz48L3N2Zz4=");
 		background-position: bottom -1px left 0;
