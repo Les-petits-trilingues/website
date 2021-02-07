@@ -1,6 +1,6 @@
 <?php
 /**
- * Title: Content on the page
+ * Title: Header of the page
  * Post Type: courses
  *
  * @noinspection PhpUndefinedFunctionInspection
