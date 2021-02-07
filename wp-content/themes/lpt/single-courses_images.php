@@ -1,5 +1,6 @@
 <?php
 /**
+ * Template Name: Images gallery
  * Template Post Type: courses
  *
  * @noinspection PhpUndefinedFunctionInspection

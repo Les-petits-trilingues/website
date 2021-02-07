@@ -1,7 +1,7 @@
 <?php
 /**
+ * Template Name: Cards only
  * Template Post Type: courses
- *
  * @noinspection PhpUndefinedFunctionInspection
  * @noinspection HtmlRequiredLangAttribute
  * @var stdClass $post
