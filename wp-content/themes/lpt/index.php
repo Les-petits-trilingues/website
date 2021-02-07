@@ -33,7 +33,7 @@ use App\Proxies\CoursePost;
 					<li class="inline-block">Marais</li>
 					<li class="inline-block">Aubervilliers</li>
 				</ul>
-				<p class="px-4 mb-14">
+				<p class="px-4 mb-14 md:text-xl">
 					我们来自法国巴黎，是一所致力于<strong class="text-red">中英法</strong>三语教学的国际语言学校。
 				</p>
 				<ul class="flex flex-wrap text-center mb-8 px-4">
