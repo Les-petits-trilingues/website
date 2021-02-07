@@ -7,6 +7,8 @@ namespace App\Proxies;
  *
  * @package App\Proxies
  * @property-read int $menu_item_parent
+ * @property-read string $title
+ * @property-read string $url
  * @property-read int $description
  */
 final class MenuItem extends PostProxy

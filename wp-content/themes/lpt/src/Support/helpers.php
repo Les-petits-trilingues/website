@@ -131,6 +131,7 @@ if (! function_exists("getThemeMenu")) {
 		// Before returning, we only keep the top-level element.
 		// Any children (sub-menu) is kept inside them as a descendant.
 		// The menu tree has been reconstructed (or "un-flatten").
-		return array_filter($menuItems, fn($menuItem) => ! $menuItem->hasParent());
+		// We also reset keys with array_values.
+		return array_values(array_filter($menuItems, fn($menuItem) => ! $menuItem->hasParent()));
 	}
 }
