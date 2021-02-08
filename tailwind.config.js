@@ -36,6 +36,7 @@ module.exports = {
 			gray: colors.gray,
 			beige: {
 				light: "#f4f1f1",
+				DEFAULT: "#fef4e0",
 			},
 			green: {
 				light: "#c1ebd5",
@@ -45,7 +46,7 @@ module.exports = {
 				DEFAULT: "#f29833",
 			},
 			red: {
-				DEFAULT: "#D42F2A",
+				DEFAULT: "#d42f2a",
 			}
 		},
 		screens: {
