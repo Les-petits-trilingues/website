@@ -1,3 +1,13 @@
+<?php
+
+use App\Proxies\CoursePost;
+
+/**
+ * @var stdClass $post
+ * @var CoursePost $course
+ */
+?>
+
 <header class="px-4 py-12 mt-4 bg-beige">
 	<div class="container text-center relative sm:text-left sm:mx-auto">
 		<img src="<?= $course->headerImage ?>" alt="" class="m-auto mb-8 h-56 sm:h-64 sm:absolute sm:-right-16"/>
