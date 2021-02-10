@@ -18,6 +18,7 @@ use WP_Query;
  * @property-read string[] $caracteristics
  * @property-read array<string, string> $price
  * @property-read string $headerImage
+ * @property-read array $sections
  */
 final class CoursePost extends PostProxy
 {
