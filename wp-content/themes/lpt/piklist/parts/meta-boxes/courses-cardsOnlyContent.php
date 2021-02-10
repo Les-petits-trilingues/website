@@ -59,7 +59,7 @@ piklist("field", [
 			"attributes" => ["placeholder" => ""],
 		],
 		[
-			"type" => "textarea",
+			"type" => "text",
 			"field" => "subtitle",
 			"label" => "Section subtitle",
 			"columns" => 12,
