@@ -3,6 +3,9 @@
  * @noinspection PhpUndefinedFunctionInspection
  * @noinspection HtmlRequiredLangAttribute
  */
+
+use App\Core\Theme;
+
 ?>
 <head>
 	<meta charset="utf-8">
@@ -12,6 +15,8 @@
 	<?php wp_head(); ?>
 	<?php
 	// Analytics Script (optional)
-	echo env("ANALYTICS_SCRIPT") ?? "";
+	if (Theme::isProd()) {
+		echo env("ANALYTICS_SCRIPT") ?? "";
+	}
 	?>
 </head>
