@@ -10,6 +10,7 @@ use App\Proxies\CoursePost;
 
 <header class="px-4 py-12 mt-4 bg-beige">
 	<div class="container text-center relative sm:text-left sm:mx-auto">
+		<img src="<?= asset("/images/bg-2.png") ?>" alt="" class="hidden sm:block absolute h-96 -left-32 -top-20"/>
 		<img src="<?= $course->headerImage ?>" alt="" class="m-auto mb-8 h-56 sm:h-64 sm:absolute sm:-right-16"/>
 		<h1 class="text-5xl font-bold mb-4 sm:text-6xl"><?= wp_title("") ?></h1>
 		<p class="mb-12 text-2xl"><?= $course->subtitle ?></p>
