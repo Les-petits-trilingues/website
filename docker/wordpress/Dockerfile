@@ -11,7 +11,6 @@ RUN rm -r /usr/src/wordpress/wp-content
 # [Theme]
 COPY ./.env /var/www/html/.env
 COPY ./wp-content/themes /var/www/html/wp-content/themes
-
 # [Composer]
 COPY ./composer.json /var/www/html/composer.json
 COPY ./composer.lock /var/www/html/composer.lock
