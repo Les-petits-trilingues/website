@@ -24,13 +24,13 @@ final class Theme
 
 	public static function isProd(): bool
 	{
-		return in_array(Environment::get("THEME_ENV"), ["prod", "production"], true);
+		return ! self::isLocal();
 	}
 
 
 	public static function isLocal(): bool
 	{
-		return ! self::isProd();
+		return ! Environment::get("THEME_ENV") === "local";
 	}
 
 
