@@ -17,17 +17,25 @@ if (have_posts()):
 	<!doctype html>
 	<html <?php language_attributes() ?>>
 	<?php include "components/head.php" ?>
-	<body <?php body_class(['bg-beige-light font-sans bg-no-repeat bg-center bg-top']); ?>
-		style="background-image: url(<?= asset("images/bg-1.svg") ?>); background-size: 100%;"
-	>
+	<body <?php body_class(['font-sans']); ?>>
 	<?php include "components/header.php" ?>
 	<main class="pb-24">
 
 		<?php include "components/courses/header.php" ?>
 
-		<?php include "components/courses/contentTopImages.php" ?>
-
-		<section class="container m-auto"></section>
+		<?php foreach ($course->sections as $section) : ?>
+			<section class="container m-auto">
+				<h2 class="text-4xl mt-16 mb-10"><?= $section["title"] ?></h2>
+				<p class="mb-6"><?= $section["description"] ?></p>
+				<ul class="flex flex-wrap justify-center items-stretch -mx-3">
+					<?php foreach ($section["images"] as $image) : ?>
+						<li class="flex-1 py-3">
+							<img class="mx-auto mb-6 max-h-40" src="<?= $image ?>" alt=""/>
+						</li>
+					<?php endforeach; ?>
+				</ul>
+			</section>
+		<?php endforeach; ?>
 
 	</main>
 	<?php include "components/footer.php" ?>

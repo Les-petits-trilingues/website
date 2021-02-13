@@ -7,18 +7,6 @@
  * @noinspection PhpUndefinedFunctionInspection
  */
 
-piklist("field", [
-	"type" => "file",
-	"field" => "contentTopImages",
-	"label" => "Photos",
-	"options" => [
-		"button" => "Add image",
-		"save" => "url",
-	],
-	"columns" => 12,
-	"add_more" => true,
-]);
-
 
 piklist("field", [
 	"type" => "group",
@@ -48,7 +36,6 @@ piklist("field", [
 				"button" => "Add image",
 				"save" => "url",
 			],
-			"add_more" => true,
 		],
 	],
 ]);

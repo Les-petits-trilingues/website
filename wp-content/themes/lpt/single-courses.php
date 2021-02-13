@@ -27,7 +27,7 @@ if (have_posts()):
 
 		<?php foreach ($course->sections as $section) : ?>
 			<section class="container m-auto">
-				<h2 class="text-4xl text-center mt-16 mb-10"><?= $section["title"] ?></h2>
+				<h2 class="text-4xl mt-16 mb-10"><?= $section["title"] ?></h2>
 				<p><?= $section["description"] ?></p>
 				<ul class="flex flex-wrap items-stretch -mx-3">
 					<?php foreach ($section["cards"] as $card) : ?>
