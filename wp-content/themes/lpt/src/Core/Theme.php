@@ -30,7 +30,7 @@ final class Theme
 
 	public static function isLocal(): bool
 	{
-		return ! Environment::get("THEME_ENV") === "local";
+		return Environment::get("THEME_ENV") === "local";
 	}
 
 
