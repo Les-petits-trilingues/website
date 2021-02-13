@@ -1,0 +1,63 @@
+version: '3'
+
+services:
+  db:
+    image: mysql:8
+    networks:
+      - backend
+    environment:
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
+      MYSQL_DATABASE: wordpress
+      MYSQL_RANDOM_ROOT_PASSWORD: '1'
+    volumes:
+    - mysql_db:/var/lib/mysql
+
+  wordpress:
+    build:
+      context: .
+      dockerfile: docker/wordpress/Dockerfile
+    networks:
+      - backend
+    depends_on:
+      - db
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_DEBUG: 1
+# define( 'WP_ENVIRONMENT_TYPE', 'production' );
+# define( 'SAVEQUERIES', true );
+# define( 'DISALLOW_FILE_EDIT', true );
+# define( 'DISALLOW_FILE_MODS', true );
+# define( 'FORCE_SSL_ADMIN', true );
+# define( 'AUTOMATIC_UPDATER_DISABLED', true );
+# define( 'WP_AUTO_UPDATE_CORE', false );
+    volumes:
+      - ./wp-content/themes/lpt:/var/www/html/wp-content/themes/lpt
+      - wp_uploads:/var/www/html/wp-content/uploads
+      - wp_plugins:/var/www/html/wp-content/plugins
+
+  nginx:
+    build:
+      context: .
+      dockerfile: docker/nginx/Dockerfile
+    depends_on:
+      - wordpress
+    ports:
+      - 8000:80
+    networks:
+      - backend
+    volumes:
+      - ./wp-content/themes/lpt:/var/www/html/wp-content/themes/lpt
+      - wp_uploads:/var/www/html/wp-content/uploads
+      - wp_plugins:/var/www/html/wp-content/plugins
+
+networks:
+  backend:
+
+volumes:
+  wp_uploads: {}
+  wp_plugins: {}
+  mysql_db: {}

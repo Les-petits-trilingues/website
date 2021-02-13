@@ -1,0 +1,10 @@
+.footer {
+	@apply pt-8 pb-24 text-white;
+	background-color: #393939;
+}
+
+@screen sm {
+	.footer {
+		@apply pt-12 pb-12;
+	}
+}

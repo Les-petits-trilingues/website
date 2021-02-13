@@ -1,0 +1,9 @@
+@tailwind base;
+
+@tailwind components;
+@import "components/footer";
+
+@tailwind utilities;
+
+@import "pages/homepage";
+@import "pages/course";
