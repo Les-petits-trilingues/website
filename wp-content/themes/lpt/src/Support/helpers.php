@@ -1,5 +1,6 @@
 <?php
 
+use App\Core\Theme;
 use App\Proxies\MenuItem;
 use App\Support\Environment;
 use App\Support\Tree;
@@ -32,6 +33,13 @@ if (! function_exists("dd")) {
 		call_user_func_array('dump', func_get_args());
 		dump();
 		die();
+	}
+}
+
+if (! function_exists("theme")) {
+	function theme(): Theme
+	{
+		return Theme::getInstance();
 	}
 }
 
