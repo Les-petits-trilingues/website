@@ -7,6 +7,7 @@ use App\Support\Environment;
 final class Theme
 {
 	private static ?Theme $_instance = null;
+	private $locale;
 
 
 	private function __construct() { }
@@ -40,9 +41,17 @@ final class Theme
 	}
 
 
+	public function getLocale(): string
+	{
+		return $this->locale;
+	}
+
+
 	public function boot(): Theme
 	{
 		PluginsChecker::instance()->boot();
+		Localization::boot();
+		$this->locale = Localization::getLocale();
 		return $this;
 	}
 }
