@@ -34,6 +34,7 @@ use WP_Query;
  * @property-read string $post_mime_type
  * @property-read int $comment_count
  * @property-read string $filter
+ * @property-read string $locale
  */
 class PostProxy
 {
@@ -105,7 +106,13 @@ class PostProxy
 	}
 
 
-	/** @noinspection PhpUndefinedFunctionInspection */
+	public function isLocale(string $locale): bool
+	{
+		return $this->getMeta("locale") === $locale;
+	}
+
+
+	/** @noinspection PhpUnddefinedFunctionInspection */
 	private function loadMetas(): void
 	{
 		$metas_raw = get_post_meta($this->post->ID, '', false);

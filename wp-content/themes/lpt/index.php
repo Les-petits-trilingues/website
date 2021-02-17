@@ -10,7 +10,7 @@ use App\Proxies\CoursePost;
 
 ?>
 <!doctype html>
-<html <?php language_attributes() ?>>
+<html lang="<?= theme()->getLocale() ?>">
 <?php include "components/head.php" ?>
 <body <?php body_class(['homepage font-sans bg-no-repeat bg-center bg-top']); ?>
 	style="background-image: url(<?= asset("images/bg-1.svg") ?>)"
