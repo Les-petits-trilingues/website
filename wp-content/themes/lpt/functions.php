@@ -6,7 +6,7 @@ use App\Core\Theme;
 use App\Support\Environment;
 use App\Support\Manifest;
 
-require_once __DIR__ . '/../vendor/autoload.php';
+require_once __DIR__ . '/../../../vendor/autoload.php';
 
 Environment::boot(__DIR__ . '/../../..');
 $theme = Theme::getInstance();
