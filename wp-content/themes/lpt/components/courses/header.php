@@ -22,10 +22,10 @@ use App\Proxies\CoursePost;
 		</ul>
 		<div class="text-center sm:text-left">
 			<a href="#" class="inline-block text-xl rounded-xl bg-orange leading-none text-white px-6 py-4">
-				<?= Localization::is("fr") ? "Inscription" : "开始注册" ?>
+				<?= t("subscribe") ?>
 			</a>
 			<span class="block sm:inline-block mx-auto sm:ml-2 mt-2 text-lg">
-					<?= $course->price["value"] ?><?= Localization::is("fr") ? "&nbsp;€" : "欧" ?>/<?= $course->price[Localization::suffix("period")] ?>
+					<?= $course->price["value"] ?><?= t("€") ?>/<?= $course->price[Localization::suffix("period")] ?>
 				</span>
 		</div>
 	</div>
