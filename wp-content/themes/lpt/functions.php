@@ -3,6 +3,7 @@
 
 use App\Core\PluginsChecker;
 use App\Core\Theme;
+use App\Proxies\CoursePost;
 use App\Support\Environment;
 use App\Support\Manifest;
 
@@ -123,3 +124,16 @@ if (PluginsChecker::instance()->isActivated("piklist")) {
 		return $part;
 	}, 10, 2);
 }
+
+add_action('edit_form_after_title', function ($post) {
+	if (! CoursePost::validType($post)) {
+		return;
+	}
+
+	piklist('field', [
+		'type' => 'text',
+		'field' => 'post_title_fr',
+		'label' => 'Title (fr)',
+		'columns' => '12',
+	]);
+});
