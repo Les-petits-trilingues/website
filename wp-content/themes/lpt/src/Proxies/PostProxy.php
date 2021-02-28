@@ -140,6 +140,21 @@ class PostProxy
 	}
 
 
+	/**
+	 * Check if the given post has the same type as the static
+	 * class (the post proxy) the method is called from. If true
+	 * is return, the post can be used to instanciate the post proxy.
+	 *
+	 * @param WP_Post|PostProxy $post
+	 *
+	 * @return bool
+	 */
+	static function validType(\WP_Post $post): bool
+	{
+		return $post->post_type === static::$type;
+	}
+
+
 	static public function query(): WP_Query
 	{
 		return new WP_Query([]);
