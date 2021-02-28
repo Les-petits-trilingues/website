@@ -3,6 +3,7 @@
 
 namespace App\Proxies;
 
+use App\Core\Localization;
 use WP_Post;
 use WP_Query;
 
@@ -42,6 +43,7 @@ class PostProxy
 	public WP_Post $post;
 	private array $metas = [];
 	private bool $isMetasLoaded = false;
+	static public string $type = "post";
 
 
 	public function __construct(WP_Post $post)
@@ -52,15 +54,29 @@ class PostProxy
 
 	public function __get($name)
 	{
-		if (property_exists($this->post, $name)) {
-			return $this->post->$name;
+		$keyLocalized = Localization::suffix($name);
+
+		// Attempt to retrieve localized version
+
+		if (property_exists($this->post, $keyLocalized) || property_exists($this, $keyLocalized)) {
+			return $this->post->$keyLocalized ?? $this->$keyLocalized;
 		}
 
-		if (! property_exists($this, $name) && $this->hasMeta($name)) {
+		if ($this->hasMeta($keyLocalized)) {
+			return $this->getMeta($keyLocalized);
+		}
+
+		// Attempt to retrieve default version
+
+		if (property_exists($this->post, $name) || property_exists($this, $name)) {
+			return $this->post->$name ?? $this->$name;
+		}
+
+		if ($this->hasMeta($name)) {
 			return $this->getMeta($name);
 		}
 
-		return $this->$name ?? null;
+		return null;
 	}
 
 

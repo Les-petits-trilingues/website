@@ -13,9 +13,21 @@ piklist("field", [
 ]);
 
 piklist("field", [
+	"type" => "text",
+	"field" => "summup_title_fr",
+	"label" => "Title (fr)",
+]);
+
+piklist("field", [
 	"type" => "textarea",
 	"field" => "summup_description",
 	"label" => "Description",
+]);
+
+piklist("field", [
+	"type" => "textarea",
+	"field" => "summup_description_fr",
+	"label" => "Description (fr)",
 ]);
 
 piklist("field", [

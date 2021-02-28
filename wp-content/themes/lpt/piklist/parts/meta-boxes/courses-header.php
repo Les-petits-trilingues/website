@@ -15,8 +15,22 @@ piklist("field", [
 
 piklist("field", [
 	"type" => "text",
+	"field" => "subtitle_fr",
+	"label" => "Subtitle (fr)",
+	"columns" => 10,
+]);
+
+piklist("field", [
+	"type" => "text",
 	"field" => "caracteristics",
 	"label" => "Caracteristics",
+	"columns" => 10,
+	"add_more" => true,
+]);
+piklist("field", [
+	"type" => "text",
+	"field" => "caracteristics_fr",
+	"label" => "Caracteristics (fr)",
 	"columns" => 10,
 	"add_more" => true,
 ]);
@@ -39,6 +53,13 @@ piklist("field", [
 			"label" => "Time range",
 			"columns" => 2,
 			"attributes" => ["placeholder" => "年"],
+		],
+		[
+			"type" => "text",
+			"field" => "period_fr",
+			"label" => "Time range (fr)",
+			"columns" => 2,
+			"attributes" => ["placeholder" => "an"],
 		],
 	],
 ]);

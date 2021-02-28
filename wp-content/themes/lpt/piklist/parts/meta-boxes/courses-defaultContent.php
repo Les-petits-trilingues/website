@@ -37,13 +37,28 @@ $sectionCardItem = [
 	],
 	[
 		"type" => "text",
+		"field" => "title_fr",
+		"label" => "Title (fr)",
+	],
+	[
+		"type" => "text",
 		"field" => "subtitle",
 		"label" => "Subtitle",
+	],
+	[
+		"type" => "text",
+		"field" => "subtitle_fr",
+		"label" => "Subtitle (fr)",
 	],
 	[
 		"type" => "textarea",
 		"field" => "description",
 		"label" => "Description",
+	],
+	[
+		"type" => "textarea",
+		"field" => "description_fr",
+		"label" => "Description (fr)",
 	],
 ];
 
@@ -62,9 +77,23 @@ piklist("field", [
 			"attributes" => ["placeholder" => ""],
 		],
 		[
+			"type" => "text",
+			"field" => "title_fr",
+			"label" => "Section title (fr)",
+			"columns" => 12,
+			"attributes" => ["placeholder" => ""],
+		],
+		[
 			"type" => "textarea",
 			"field" => "description",
 			"label" => "Section description",
+			"columns" => 12,
+			"attributes" => ["placeholder" => ""],
+		],
+		[
+			"type" => "textarea",
+			"field" => "description_fr",
+			"label" => "Section description (fr)",
 			"columns" => 12,
 			"attributes" => ["placeholder" => ""],
 		],

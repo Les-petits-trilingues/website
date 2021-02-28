@@ -26,7 +26,10 @@ final class Localization
 			return self::getLocale();
 		}, 10);
 
-		self::wpQueryFilter();
+		// We remove this filter because it's not possible to
+		// have two posts with the same slug as we initially
+		// expected to do for localized custom posts.
+//		self::wpQueryFilter();
 	}
 
 
@@ -68,5 +71,37 @@ final class Localization
 	static function isLocaleAccepted(string $locale): bool
 	{
 		return in_array($locale, self::getLocales());
+	}
+
+
+	/**
+	 * Check if the current locale is the same as the one given as parameter
+	 *
+	 * @param string $locale
+	 *
+	 * @return bool
+	 */
+	static function is(string $locale): bool
+	{
+		return self::getLocale() === $locale;
+	}
+
+
+	/**
+	 * Adds the locale as a suffix to the given string.
+	 *
+	 * @param string $str The string to add a suffix to
+	 * @param bool $skipDefault If true, does not add a prefix when the locale is set to the default one
+	 * @param string $delimiter The delimiter between the string and the locale.
+	 *
+	 * @return string
+	 */
+	static function suffix(string $str, bool $skipDefault = true, string $delimiter = "_"): string
+	{
+		if ($skipDefault && self::getLocale() === self::getDefaultLocale()) {
+			return $str;
+		}
+
+		return $str . $delimiter . self::getLocale();
 	}
 }

@@ -22,9 +22,23 @@ piklist("field", [
 			"attributes" => ["placeholder" => ""],
 		],
 		[
+			"type" => "text",
+			"field" => "title_fr",
+			"label" => "Section title (fr)",
+			"columns" => 12,
+			"attributes" => ["placeholder" => ""],
+		],
+		[
 			"type" => "textarea",
 			"field" => "description",
 			"label" => "Section description",
+			"columns" => 12,
+			"attributes" => ["placeholder" => ""],
+		],
+		[
+			"type" => "textarea",
+			"field" => "description_fr",
+			"label" => "Section description (fr)",
 			"columns" => 12,
 			"attributes" => ["placeholder" => ""],
 		],

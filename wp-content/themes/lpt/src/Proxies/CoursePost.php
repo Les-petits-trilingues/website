@@ -3,6 +3,7 @@
 
 namespace App\Proxies;
 
+use App\Core\Localization;
 use WP_Post;
 use WP_Query;
 
@@ -10,7 +11,6 @@ use WP_Query;
  * Class CoursePost
  *
  * @package App\Proxies
- *
  * @property-read string $summup_title
  * @property-read string $summup_description
  * @property-read string $summup_image
@@ -22,6 +22,8 @@ use WP_Query;
  */
 final class CoursePost extends PostProxy
 {
+	static public string $type = "courses";
+
 	static public function query(): WP_Query
 	{
 		return new WP_Query([
