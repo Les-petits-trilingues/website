@@ -7,7 +7,11 @@ use App\Support\Environment;
 final class Localization
 {
 	/** @var string */
-	static private $locale;
+	static private string $locale;
+	static private string $bundlesPath;
+	/** @var array<string, array> */
+	static private array $bundles = [];
+	static private string $defaultNamespace = "general";
 
 
 	/**
@@ -26,27 +30,7 @@ final class Localization
 			return self::getLocale();
 		}, 10);
 
-		// We remove this filter because it's not possible to
-		// have two posts with the same slug as we initially
-		// expected to do for localized custom posts.
-//		self::wpQueryFilter();
-	}
-
-
-	/**
-	 * Add a filter to the query to only get posts for
-	 * the current locale.
-	 *
-	 * @noinspection PhpUndefinedFunctionInspection
-	 */
-	static private function wpQueryFilter()
-	{
-		add_filter('pre_get_posts', function ($query) {
-			if (is_single() || is_page()) {
-				$query->query_vars["meta_key"] = "locale";
-				$query->query_vars["meta_value"] = self::getLocale();
-			}
-		});
+		self::$bundlesPath = __DIR__ . "/../../languages";
 	}
 
 
@@ -103,5 +87,76 @@ final class Localization
 		}
 
 		return $str . $delimiter . self::getLocale();
+	}
+
+
+	/**
+	 * Load a translation bundle.
+	 *
+	 * @param string $namespace The namespace of the bundle (usally a filename without .php extension)
+	 * @param string $locale The locale to load
+	 *
+	 * @noinspection PhpIncludeInspection
+	 */
+	static private function loadBundle(string $namespace, string $locale): void
+	{
+		if (self::isBundleLoaded($namespace, $locale)) {
+			return;
+		}
+
+		if (! is_array(self::$bundles[$locale] ?? null)) {
+			self::$bundles[$locale] = [];
+		}
+
+		$bundlePath = join(DIRECTORY_SEPARATOR, [self::$bundlesPath, $locale, "$namespace.php"]);
+		self::$bundles[$locale][$namespace] = include $bundlePath;
+	}
+
+
+	/**
+	 * Check if a bundle has already been loaded.
+	 *
+	 * @param string $namespace The namespace of the bundle (usally a filename without .php extension)
+	 * @param string $locale The locale to load
+	 *
+	 * @return bool
+	 */
+	static private function isBundleLoaded(string $namespace, string $locale): bool
+	{
+		return isset(self::$bundles[$locale]) && isset(self::$bundles[$locale][$namespace]);
+	}
+
+
+	/**
+	 * Get a loaded bundle and automatically load if not loaded.
+	 *
+	 * @param string $namespace The namespace of the bundle (usally a filename without .php extension)
+	 * @param string|null $forceLocale The locale to load. If not set, the current locale is used.
+	 *
+	 * @return array
+	 */
+	static private function getBundle(string $namespace, string $forceLocale = null): array
+	{
+		$locale = $forceLocale ?? self::getLocale();
+
+		if (! self::isBundleLoaded($namespace, $locale)) {
+			self::loadBundle($namespace, $locale);
+		}
+
+		return self::$bundles[$locale][$namespace] ?? [];
+	}
+
+
+	/**
+	 * Get a translation string.
+	 *
+	 * @param string $key The key of the translation string
+	 * @param string|null $locale The locale to load. If not set, the current locale is used.
+	 *
+	 * @return string The translation string, or $key if the translation string does not exist.
+	 */
+	static public function trans(string $key, string $locale = null): string
+	{
+		return self::getBundle(self::$defaultNamespace, $locale)[$key] ?? $key;
 	}
 }
