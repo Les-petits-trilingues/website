@@ -82,6 +82,7 @@ class PostProxy
 
 	/**
 	 * @return object|WP_Post
+	 * @noinspection PhpUnused
 	 */
 	public function getPost(): WP_Post
 	{
@@ -122,13 +123,9 @@ class PostProxy
 	}
 
 
-	public function isLocale(string $locale): bool
-	{
-		return $this->getMeta("locale") === $locale;
-	}
-
-
-	/** @noinspection PhpUnddefinedFunctionInspection */
+	/**
+	 * @noinspection PhpUndefinedFunctionInspection
+	 */
 	private function loadMetas(): void
 	{
 		$metas_raw = get_post_meta($this->post->ID, '', false);
@@ -145,13 +142,13 @@ class PostProxy
 	 * class (the post proxy) the method is called from. If true
 	 * is return, the post can be used to instanciate the post proxy.
 	 *
-	 * @param WP_Post|PostProxy $post
+	 * @param WP_Post|PostProxy|null $post
 	 *
 	 * @return bool
 	 */
-	static function validType(\WP_Post $post): bool
+	static function validType(WP_Post $post = null): bool
 	{
-		return $post->post_type === static::$type;
+		return is_object($post) && $post->post_type === static::$type;
 	}
 
 
