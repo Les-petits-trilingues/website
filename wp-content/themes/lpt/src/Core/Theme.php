@@ -2,6 +2,7 @@
 
 namespace App\Core;
 
+use App\Igniters\IgniterInterface;
 use App\Support\Environment;
 
 final class Theme
@@ -52,6 +53,31 @@ final class Theme
 		PluginsChecker::instance()->boot();
 		Localization::boot();
 		$this->locale = Localization::getLocale();
+		return $this;
+	}
+
+
+	/**
+	 * Ignite the Theme with the given classes.
+	 *
+	 * @param string[] $igniters List of igniters classnames
+	 *
+	 * @return $this
+	 */
+	public function ignite(array $igniters): Theme
+	{
+		foreach ($igniters as $igniterClassname) {
+			// Does not implement igniters
+			if (! in_array(IgniterInterface::class, class_implements($igniterClassname), true)) {
+				continue;
+			}
+
+			// Ignite !
+			/** @var IgniterInterface $igniter */
+			$igniter = new $igniterClassname();
+			$igniter->wpFilters();
+			$igniter->wpActions();
+		}
 		return $this;
 	}
 }
