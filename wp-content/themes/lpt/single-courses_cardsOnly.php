@@ -8,6 +8,7 @@
  * @var stdClass $post
  */
 
+use App\Core\Localization;
 use App\Proxies\CoursePost;
 
 if (have_posts()):
@@ -32,18 +33,18 @@ if (have_posts()):
 				<?php foreach ($course->sections as $section) : ?>
 				<div class="px-3 mb-6 flex-auto flex-grow-0 w-1/2 ">
 					<section class="bg-beige px-8 py-6 rounded-xl h-full">
-						<h2 class="text-2xl text-center"><?= $section["title"] ?></h2>
-						<p class="text-center"><?= $section["subtitle"] ?></p>
+						<h2 class="text-2xl text-center"><?= $section[Localization::suffix("title")] ?></h2>
+						<p class="text-center"><?= $section[Localization::suffix("subtitle")] ?></p>
 						<ul class="flex -mx-3 text-center">
 							<li class="flew-1 w-1/2 bg-beige px-3 rounded-xl">
 								<img class="mb-6 mx-auto max-h-28" src="<?= $section["left"]["image"][0] ?>" alt=""/>
-								<h3 class="font-bold text-sm"><?= $section["left"]["title"] ?></h3>
-								<p class="text-xs"><?= $section["left"]["description"] ?></p>
+								<h3 class="font-bold text-sm"><?= $section["left"][Localization::suffix("title")] ?></h3>
+								<p class="text-xs"><?= $section["left"][Localization::suffix("description")] ?></p>
 							</li>
 							<li class="flew-1 w-1/2 bg-beige px-3 rounded-xl">
 								<img class="mb-6 mx-auto max-h-28" src="<?= $section["right"]["image"][0] ?>" alt=""/>
-								<h3 class="font-bold text-sm"><?= $section["right"]["title"] ?></h3>
-								<p class="text-xs"><?= $section["right"]["description"] ?></p>
+								<h3 class="font-bold text-sm"><?= $section["right"][Localization::suffix("title")] ?></h3>
+								<p class="text-xs"><?= $section["right"][Localization::suffix("description")] ?></p>
 							</li>
 						</ul>
 					</section>

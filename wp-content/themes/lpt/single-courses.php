@@ -7,6 +7,7 @@
  * @var stdClass $post
  */
 
+use App\Core\Localization;
 use App\Proxies\CoursePost;
 
 if (have_posts()):
@@ -33,9 +34,9 @@ if (have_posts()):
 					<?php foreach ($section["cards"] as $card) : ?>
 						<li class="bg-beige mx-3 px-8 py-6 flex-1 rounded-xl">
 							<img class="mb-6" src="<?= $card["images"][0] ?>" alt=""/>
-							<h3 class="text-2xl"><?= $card["title"] ?></h3>
-							<p class="mb-4 text-lg"><?= $card["subtitle"] ?></p>
-							<p class="text-sm"><?= $card["description"] ?></p>
+							<h3 class="text-2xl"><?= $card[Localization::suffix("title")] ?></h3>
+							<p class="mb-4 text-lg"><?= $card[Localization::suffix("subtitle")] ?></p>
+							<p class="text-sm"><?= $card[Localization::suffix("description")] ?></p>
 						</li>
 					<?php endforeach; ?>
 				</ul>

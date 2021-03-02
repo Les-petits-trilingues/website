@@ -3,6 +3,7 @@
 
 namespace App\Proxies;
 
+use App\Core\Localization;
 use WP_Post;
 use WP_Query;
 
@@ -34,6 +35,7 @@ use WP_Query;
  * @property-read string $post_mime_type
  * @property-read int $comment_count
  * @property-read string $filter
+ * @property-read string $locale
  */
 class PostProxy
 {
@@ -41,6 +43,7 @@ class PostProxy
 	public WP_Post $post;
 	private array $metas = [];
 	private bool $isMetasLoaded = false;
+	static public string $type = "post";
 
 
 	public function __construct(WP_Post $post)
@@ -51,20 +54,35 @@ class PostProxy
 
 	public function __get($name)
 	{
-		if (property_exists($this->post, $name)) {
-			return $this->post->$name;
+		$keyLocalized = Localization::suffix($name);
+
+		// Attempt to retrieve localized version
+
+		if (property_exists($this->post, $keyLocalized) || property_exists($this, $keyLocalized)) {
+			return $this->post->$keyLocalized ?? $this->$keyLocalized;
 		}
 
-		if (! property_exists($this, $name) && $this->hasMeta($name)) {
+		if ($this->hasMeta($keyLocalized)) {
+			return $this->getMeta($keyLocalized);
+		}
+
+		// Attempt to retrieve default version
+
+		if (property_exists($this->post, $name) || property_exists($this, $name)) {
+			return $this->post->$name ?? $this->$name;
+		}
+
+		if ($this->hasMeta($name)) {
 			return $this->getMeta($name);
 		}
 
-		return $this->$name ?? null;
+		return null;
 	}
 
 
 	/**
 	 * @return object|WP_Post
+	 * @noinspection PhpUnused
 	 */
 	public function getPost(): WP_Post
 	{
@@ -105,7 +123,9 @@ class PostProxy
 	}
 
 
-	/** @noinspection PhpUndefinedFunctionInspection */
+	/**
+	 * @noinspection PhpUndefinedFunctionInspection
+	 */
 	private function loadMetas(): void
 	{
 		$metas_raw = get_post_meta($this->post->ID, '', false);
@@ -114,6 +134,21 @@ class PostProxy
 		$metas = array_map(fn($val) => is_array($val) && count($val) === 1 && isset($val[0]) ? $val[0] : $val, $metas_raw);
 		$this->metas = array_map('maybe_unserialize', $metas);
 		$this->isMetasLoaded = true;
+	}
+
+
+	/**
+	 * Check if the given post has the same type as the static
+	 * class (the post proxy) the method is called from. If true
+	 * is return, the post can be used to instanciate the post proxy.
+	 *
+	 * @param WP_Post|PostProxy|null $post
+	 *
+	 * @return bool
+	 */
+	static function validType(WP_Post $post = null): bool
+	{
+		return is_object($post) && $post->post_type === static::$type;
 	}
 
 

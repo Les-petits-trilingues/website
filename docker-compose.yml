@@ -27,14 +27,11 @@ services:
       WORDPRESS_DB_PASSWORD: wordpress
       WORDPRESS_DB_NAME: wordpress
       WORDPRESS_DEBUG: 1
-#      WORDPRESS_CONFIG_EXTRA: |
-# define( 'WP_ENVIRONMENT_TYPE', 'production' );
-# define( 'SAVEQUERIES', true );
-# define( 'DISALLOW_FILE_EDIT', true );
-# define( 'DISALLOW_FILE_MODS', true );
-# define( 'FORCE_SSL_ADMIN', true );
-# define( 'AUTOMATIC_UPDATER_DISABLED', true );
-# define( 'WP_AUTO_UPDATE_CORE', false );
+      WORDPRESS_CONFIG_EXTRA: |
+        define('DISALLOW_FILE_EDIT', true);
+        define('DISALLOW_FILE_MODS', true);
+        define('AUTOMATIC_UPDATER_DISABLED', true);
+        define('WP_AUTO_UPDATE_CORE', false);
     volumes:
       - ./wp-content/themes/lpt:/var/www/html/wp-content/themes/lpt
       - wp_uploads:/var/www/html/wp-content/uploads

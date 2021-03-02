@@ -1,5 +1,7 @@
 <?php
 
+use App\Core\Localization;
+use App\Core\Theme;
 use App\Proxies\MenuItem;
 use App\Support\Environment;
 use App\Support\Tree;
@@ -32,6 +34,13 @@ if (! function_exists("dd")) {
 		call_user_func_array('dump', func_get_args());
 		dump();
 		die();
+	}
+}
+
+if (! function_exists("theme")) {
+	function theme(): Theme
+	{
+		return Theme::getInstance();
 	}
 }
 
@@ -133,5 +142,12 @@ if (! function_exists("getThemeMenu")) {
 		// The menu tree has been reconstructed (or "un-flatten").
 		// We also reset keys with array_values.
 		return array_values(array_filter($menuItems, fn($menuItem) => ! $menuItem->hasParent()));
+	}
+}
+
+if (! function_exists("t")) {
+	function t(string $key): string
+	{
+		return Localization::trans($key);
 	}
 }
