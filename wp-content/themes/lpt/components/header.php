@@ -1,3 +1,8 @@
+<?php
+
+use App\Core\Localization;
+
+?>
 <header
 	class="fixed h-16 px-4 inset-x-0 bottom-0 bg-white container mx-auto flex justify-between border-t-2 border-gray-200
 			   z-30 sm:h-auto sm:border-0 sm:mt-6 sm:relative sm:bg-opacity-0 sm:shadow-none"
@@ -13,7 +18,7 @@
 
 	<nav class="flex-1 sm:flex sm:items-center sm:justify-end sm:mr-16">
 		<ul class="flex h-full w-full justify-end items-stretch text-center sm:h-auto sm:w-auto">
-			<?php foreach ($items = getThemeMenu("primary") as $key => $item) : ?>
+			<?php foreach ($items = getThemeMenu(Localization::suffix("primary")) as $key => $item) : ?>
 				<li class="flex-1 sm:flex-none <?= count($items) - 1 > $key ? "sm:mr-6" : "" ?>">
 					<a class="flex items-center justify-center w-full h-full hover:text-green" href="<?= $item->url ?>">
 						<span><?= $item->title ?></span>
