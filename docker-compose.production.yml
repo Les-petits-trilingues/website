@@ -47,7 +47,7 @@ services:
     depends_on:
       - wordpress
     ports:
-      - 8000:80
+      - "${NGINX_PORT}:80"
     networks:
       - backend
     volumes:
