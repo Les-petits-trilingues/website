@@ -54,7 +54,7 @@ use App\Proxies\CoursePost;
 						在校学员/年
 					</li>
 				</ul>
-				<a href="#" class="inline-block rounded-xl bg-orange text-xl text-white px-6 py-2">
+				<a href="https://tools.lpt.ovh/onboarding?locale=<?= theme()->getLocale() ?>" class="inline-block rounded-xl bg-orange text-xl text-white px-6 py-2">
 					开始注册
 				</a>
 			</div>
