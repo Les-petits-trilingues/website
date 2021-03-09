@@ -21,7 +21,7 @@ use App\Proxies\CoursePost;
 			<?php endforeach; ?>
 		</ul>
 		<div class="text-center sm:text-left">
-			<a href="#" class="inline-block text-xl rounded-xl bg-orange leading-none text-white px-6 py-4">
+			<a href="<?= $course->register_link ?>" class="inline-block text-xl rounded-xl bg-orange leading-none text-white px-6 py-4">
 				<?= t("subscribe") ?>
 			</a>
 			<span class="block sm:inline-block mx-auto sm:ml-2 mt-2 text-lg">

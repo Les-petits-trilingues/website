@@ -15,6 +15,7 @@ use WP_Query;
  * @property-read string $summup_description
  * @property-read string $summup_image
  * @property-read string $subtitle
+ * @property-read string $register_link
  * @property-read string[] $caracteristics
  * @property-read array<string, string> $price
  * @property-read string $headerImage
