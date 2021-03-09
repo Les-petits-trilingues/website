@@ -71,7 +71,7 @@ use App\Proxies\CoursePost;
 			</div>
 		</div>
 	</section>
-	<section class="pt-8 px-4">
+	<section class="pt-8 px-4" id="courses">
 		<h2 class="sm:mt-32 mb-4 text-center font-bold text-4xl">课程介绍</h2>
 		<ul class="m-auto flex-wrap sm:max-w-4xl sm:flex">
 			<?php
