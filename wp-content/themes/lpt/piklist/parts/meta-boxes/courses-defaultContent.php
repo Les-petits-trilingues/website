@@ -7,18 +7,6 @@
  * @noinspection PhpUndefinedFunctionInspection
  */
 
-piklist("field", [
-	"type" => "file",
-	"field" => "contentTopImages",
-	"label" => "Photos",
-	"options" => [
-		"button" => "Add image",
-		"save" => "url",
-	],
-	"columns" => 12,
-	"add_more" => true,
-]);
-
 $sectionCardItem = [
 	[
 		"type" => "file",

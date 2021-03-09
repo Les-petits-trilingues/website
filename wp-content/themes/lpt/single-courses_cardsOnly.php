@@ -18,9 +18,7 @@ if (have_posts()):
 	<!doctype html>
 	<html <?php language_attributes() ?>>
 	<?php include "components/head.php" ?>
-	<body <?php body_class(['bg-beige-light font-sans bg-no-repeat bg-center bg-top']); ?>
-		style="background-image: url(<?= asset("images/bg-1.svg") ?>); background-size: 100%;"
-	>
+	<body <?php body_class(['font-sans']); ?>>
 	<?php include "components/header.php" ?>
 	<main class="pb-24">
 
@@ -34,16 +32,16 @@ if (have_posts()):
 				<div class="px-3 mb-6 flex-auto flex-grow-0 w-1/2 ">
 					<section class="bg-beige px-8 py-6 rounded-xl h-full">
 						<h2 class="text-2xl text-center"><?= $section[Localization::suffix("title")] ?></h2>
-						<p class="text-center"><?= $section[Localization::suffix("subtitle")] ?></p>
+						<p class="text-center mb-4"><?= $section[Localization::suffix("subtitle")] ?></p>
 						<ul class="flex -mx-3 text-center">
 							<li class="flew-1 w-1/2 bg-beige px-3 rounded-xl">
-								<img class="mb-6 mx-auto max-h-28" src="<?= $section["left"]["image"][0] ?>" alt=""/>
-								<h3 class="font-bold text-sm"><?= $section["left"][Localization::suffix("title")] ?></h3>
+								<img class="mb-6 mx-auto max-h-36" src="<?= $section["left"]["image"][0] ?>" alt=""/>
+								<h3 class="font-bold text-sm mb-2"><?= $section["left"][Localization::suffix("title")] ?></h3>
 								<p class="text-xs"><?= $section["left"][Localization::suffix("description")] ?></p>
 							</li>
 							<li class="flew-1 w-1/2 bg-beige px-3 rounded-xl">
-								<img class="mb-6 mx-auto max-h-28" src="<?= $section["right"]["image"][0] ?>" alt=""/>
-								<h3 class="font-bold text-sm"><?= $section["right"][Localization::suffix("title")] ?></h3>
+								<img class="mb-6 mx-auto max-h-36" src="<?= $section["right"]["image"][0] ?>" alt=""/>
+								<h3 class="font-bold text-sm mb-2"><?= $section["right"][Localization::suffix("title")] ?></h3>
 								<p class="text-xs"><?= $section["right"][Localization::suffix("description")] ?></p>
 							</li>
 						</ul>

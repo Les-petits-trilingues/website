@@ -131,7 +131,7 @@ class PostProxy
 		$metas_raw = get_post_meta($this->post->ID, '', false);
 		// If we have an array with a single value it might be a non-array field, so we unwrap the array
 		// note: isset($value[0]) is to check if it is a sequential array
-		$metas = array_map(fn($val) => is_array($val) && count($val) === 1 && isset($val[0]) ? $val[0] : $val, $metas_raw);
+		$metas = array_map(fn($val) => (is_array($val) && count($val) === 1 && isset($val[0])) ? $val[0] : $val, $metas_raw);
 		$this->metas = array_map('maybe_unserialize', $metas);
 		$this->isMetasLoaded = true;
 	}
@@ -152,9 +152,9 @@ class PostProxy
 	}
 
 
-	static public function query(): WP_Query
+	static public function query(array $parameters = []): WP_Query
 	{
-		return new WP_Query([]);
+		return new WP_Query($parameters);
 	}
 
 

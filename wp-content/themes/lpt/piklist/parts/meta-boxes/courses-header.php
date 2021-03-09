@@ -65,6 +65,13 @@ piklist("field", [
 ]);
 
 piklist("field", [
+	"type" => "text",
+	"field" => "register_link",
+	"label" => "Register url",
+	"columns" => 10,
+]);
+
+piklist("field", [
 	"type" => "file",
 	"field" => "headerImage",
 	"label" => "Header image",
