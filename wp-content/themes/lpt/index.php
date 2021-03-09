@@ -75,7 +75,7 @@ use App\Proxies\CoursePost;
 		<h2 class="sm:mt-32 mb-4 text-center font-bold text-4xl">课程介绍</h2>
 		<ul class="m-auto flex-wrap sm:max-w-4xl sm:flex">
 			<?php
-			$courses = CoursePost::fetchAll();
+			$courses = CoursePost::fetchForHomepage();
 			foreach ($courses as $index => $course) : ?>
 				<li
 					class="flex items-start flex-row-reverse flex-shrink-0 <?= $index < count($courses) - 1 ? "border-b" : "" ?>

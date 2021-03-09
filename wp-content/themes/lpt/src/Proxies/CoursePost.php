@@ -3,7 +3,6 @@
 
 namespace App\Proxies;
 
-use App\Core\Localization;
 use WP_Post;
 use WP_Query;
 
@@ -25,14 +24,26 @@ final class CoursePost extends PostProxy
 {
 	static public string $type = "courses";
 
-	static public function query(): WP_Query
+
+	static public function query(array $parameters = []): WP_Query
 	{
-		return new WP_Query([
+		return parent::query(array_merge([
 			"post_type" => "courses",
 			"nopaging" => true,
 			"posts_per_page" => -1,
 			"order" => "ASC",
 			"orderby" => "menu_order",
+		], $parameters));
+	}
+
+
+	static public function fetchForHomepage(): array
+	{
+		$query = CoursePost::query([
+			'meta_key' => 'onHomepage',
+			'meta_value' => 'true',
 		]);
+		/** @noinspection PhpUndefinedMethodInspection */
+		return array_map(fn($post) => new static($post), $query->get_posts());
 	}
 }

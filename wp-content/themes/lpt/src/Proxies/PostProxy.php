@@ -152,9 +152,9 @@ class PostProxy
 	}
 
 
-	static public function query(): WP_Query
+	static public function query(array $parameters = []): WP_Query
 	{
-		return new WP_Query([]);
+		return new WP_Query($parameters);
 	}
 
 
