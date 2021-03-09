@@ -2,6 +2,7 @@
 
 use App\Core\Localization;
 use App\Proxies\CoursePost;
+use App\Support\Arr;
 
 /**
  * @var stdClass $post
@@ -16,12 +17,12 @@ use App\Proxies\CoursePost;
 		<h1 class="text-5xl font-bold mb-4 sm:text-6xl"><?= $course->post_title ?></h1>
 		<p class="mb-12 text-2xl"><?= $course->subtitle ?></p>
 		<ul class="sm:mx-0 course-caracteristicsList">
-			<?php foreach ($course->caracteristics as $key => $caracteristic) : ?>
+			<?php foreach (Arr::wrap($course->caracteristics) as $key => $caracteristic) : ?>
 				<li><?= $caracteristic ?></li>
 			<?php endforeach; ?>
 		</ul>
 		<div class="text-center sm:text-left">
-			<a href="#" class="inline-block text-xl rounded-xl bg-orange leading-none text-white px-6 py-4">
+			<a href="<?= $course->register_link ?>" class="inline-block text-xl rounded-xl bg-orange leading-none text-white px-6 py-4">
 				<?= t("subscribe") ?>
 			</a>
 			<span class="block sm:inline-block mx-auto sm:ml-2 mt-2 text-lg">

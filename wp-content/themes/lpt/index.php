@@ -54,7 +54,7 @@ use App\Proxies\CoursePost;
 						在校学员/年
 					</li>
 				</ul>
-				<a href="#" class="inline-block rounded-xl bg-orange text-xl text-white px-6 py-2">
+				<a href="https://tools.lpt.ovh/onboarding?locale=<?= theme()->getLocale() ?>" class="inline-block rounded-xl bg-orange text-xl text-white px-6 py-2">
 					开始注册
 				</a>
 			</div>
@@ -71,11 +71,11 @@ use App\Proxies\CoursePost;
 			</div>
 		</div>
 	</section>
-	<section class="pt-8 px-4">
+	<section class="pt-8 px-4" id="courses">
 		<h2 class="sm:mt-32 mb-4 text-center font-bold text-4xl">课程介绍</h2>
 		<ul class="m-auto flex-wrap sm:max-w-4xl sm:flex">
 			<?php
-			$courses = CoursePost::fetchAll();
+			$courses = CoursePost::fetchForHomepage();
 			foreach ($courses as $index => $course) : ?>
 				<li
 					class="flex items-start flex-row-reverse flex-shrink-0 <?= $index < count($courses) - 1 ? "border-b" : "" ?>
