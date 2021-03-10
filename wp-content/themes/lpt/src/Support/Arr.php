@@ -14,7 +14,7 @@ final class Arr
 		if (is_null($val)) {
 			return [];
 		}
-		
+
 		return is_array($val) ? $val : [$val];
 	}
 }
