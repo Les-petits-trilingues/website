@@ -64,9 +64,9 @@ use App\Proxies\CoursePost;
 					     class="rounded-md mb-3"
 					     alt="Un groupe d'enfant souriant prend la pose"
 					/>
-					<figcaption class="text-sm text-center sm:text-left">
-						Visite du musée de l’imprimerie à Hanzhou, Chine
-					</figcaption>
+<!--					<figcaption class="text-sm text-center sm:text-left">-->
+<!--						Visite du musée de l’imprimerie à Hanzhou, Chine-->
+<!--					</figcaption>-->
 				</figure>
 			</div>
 		</div>
