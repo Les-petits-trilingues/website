@@ -30,7 +30,6 @@ use App\Proxies\CoursePost;
 				<ul class="placesList text-sm mb-12">
 					<li class="inline-block">Belleville</li>
 					<li class="inline-block">Place d’Italie</li>
-					<li class="inline-block">Marais</li>
 					<li class="inline-block">Aubervilliers</li>
 				</ul>
 				<p class="px-4 mb-14 md:text-xl">
