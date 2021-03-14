@@ -32,6 +32,7 @@ services:
         define('DISALLOW_FILE_MODS', true);
         define('AUTOMATIC_UPDATER_DISABLED', true);
         define('WP_AUTO_UPDATE_CORE', false);
+        define('CONCATENATE_SCRIPTS', false);
     volumes:
       - ./wp-content/themes/lpt:/var/www/html/wp-content/themes/lpt
       - wp_uploads:/var/www/html/wp-content/uploads
