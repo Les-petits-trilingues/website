@@ -25,26 +25,30 @@ use App\Support\Manifest;
 		</div>
 		<div class="sm:flex-auto">
 			<div class="mx-8 sm:m-0 sm:flex flex-row">
-				<div class="sm:w-1/2">
-					<?php foreach (Arr::wrap(getThemeMenu(Localization::suffix("footer_left"))) as $item) : ?>
-						<h3 class="font-bold text-xl mb-6"><?= $item->post_title ?></h3>
-						<ul class="mb-12 sm:mb-8 sm:text-sm">
-							<?php foreach ($item->getChildren() as $child) : ?>
-								<li class="mb-4 sm:mb-2"><?= $child->post_title ?></li>
-							<?php endforeach; ?>
-						</ul>
-					<?php endforeach; ?>
-				</div>
-				<div class="sm:w-1/2">
-					<?php foreach (Arr::wrap(getThemeMenu(Localization::suffix("footer_right"))) as $item) : ?>
-						<h3 class="font-bold text-xl mb-6"><?= $item->post_title ?></h3>
-						<ul class="mb-12 sm:mb-8 sm:text-sm">
-							<?php foreach ($item->getChildren() as $child) : ?>
-								<li class="mb-4 sm:mb-2"><?= $child->post_title ?></li>
-							<?php endforeach; ?>
-						</ul>
-					<?php endforeach; ?>
-				</div>
+				<?php foreach (["footer_left", "footer_right"] as $key): ?>
+					<div class="sm:w-1/2">
+						<?php /** @var \App\Proxies\MenuItem $item */
+						foreach (Arr::wrap(getThemeMenu(Localization::suffix($key))) as $item) : ?>
+							<h3 class="font-bold text-xl mb-6"><?= $item->post_title ?></h3>
+							<ul class="mb-12 sm:mb-8 sm:text-sm">
+								<?php foreach ($item->getChildren() as $child) : ?>
+									<li class="mb-4 sm:mb-2">
+										<?php
+//										dump($child);
+										$link = $child->url;
+										$content = $child->post_title;
+										if (! empty($link) && $link !== "#") {
+											echo "<a href=\"$link\">$content</a>";
+										} else {
+											echo $content;
+										}
+										?>
+									</li>
+								<?php endforeach; ?>
+							</ul>
+						<?php endforeach; ?>
+					</div>
+				<?php endforeach; ?>
 			</div>
 		</div>
 	</div>

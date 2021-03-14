@@ -89,7 +89,7 @@ if (! function_exists("getThemeMenu")) {
 	/**
 	 * @param string $location
 	 *
-	 * @return array<int, MenuItem>
+	 * @return MenuItem[]
 	 * @noinspection PhpUndefinedFunctionInspection
 	 */
 	function getThemeMenu(string $location): array
