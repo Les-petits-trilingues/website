@@ -34,7 +34,7 @@ module.exports = ({production}) => {
 		output: {
 			filename: production ? '[name].[contenthash:5].js' : '[name].js',
 			path: path.resolve(__dirname, 'wp-content/themes/lpt/assets/'),
-			publicPath: "wp-content/themes/lpt/assets/",
+			publicPath: "/wp-content/themes/lpt/assets/",
 		},
 		stats: "normal",
 		devServer: {
