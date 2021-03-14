@@ -109,7 +109,7 @@ if (! function_exists("getThemeMenu")) {
 		// We fetch the menu items for the requested location, and wrap
 		// them inside MenuItem to make them easier to manipulate
 		$wpMenuItems = wp_get_nav_menu_items($locations[$location]);
-		$proxiedMenuItems = array_map(fn($item) => new MenuItem($item), $wpMenuItems);
+		$proxiedMenuItems = array_map(fn($item) => new MenuItem($item), $wpMenuItems ?: []);
 
 		// We use the items ID as array keys. That way, we will be
 		// able to easily create relations between items.
