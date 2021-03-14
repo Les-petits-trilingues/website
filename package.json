@@ -8,6 +8,7 @@
     "build": "webpack --mode=production --env production"
   },
   "dependencies": {
+    "@fontsource/signika": "^4.2.2",
     "autoprefixer": "^10.1.0",
     "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^5.0.1",

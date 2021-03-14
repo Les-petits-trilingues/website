@@ -22,7 +22,11 @@ if (! function_exists("dump")) {
 			$styles_str = join(";", $styles);
 
 			echo "<pre style='$styles_str'>";
-			echo preg_replace("/^\s{4}/m", "  ", print_r($arg, true));
+			if(is_scalar($arg)) {
+				var_dump($arg);
+			} else {
+				echo preg_replace("/^\s{4}/m", "  ", print_r($arg, true));
+			}
 			echo "</pre>";
 		}
 	}
@@ -89,7 +93,7 @@ if (! function_exists("getThemeMenu")) {
 	/**
 	 * @param string $location
 	 *
-	 * @return array<int, MenuItem>
+	 * @return MenuItem[]
 	 * @noinspection PhpUndefinedFunctionInspection
 	 */
 	function getThemeMenu(string $location): array
@@ -109,7 +113,7 @@ if (! function_exists("getThemeMenu")) {
 		// We fetch the menu items for the requested location, and wrap
 		// them inside MenuItem to make them easier to manipulate
 		$wpMenuItems = wp_get_nav_menu_items($locations[$location]);
-		$proxiedMenuItems = array_map(fn($item) => new MenuItem($item), $wpMenuItems);
+		$proxiedMenuItems = array_map(fn($item) => new MenuItem($item), $wpMenuItems ?: []);
 
 		// We use the items ID as array keys. That way, we will be
 		// able to easily create relations between items.

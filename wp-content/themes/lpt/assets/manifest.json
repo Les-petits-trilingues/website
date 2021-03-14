@@ -1,4 +1,8 @@
 {
-  "index.css": "index.f2400.css",
-  "index.js": "index.31d6c.js"
+  "index.css": "wp-content/themes/lpt/assets/index.8cc4e.css",
+  "index.js": "wp-content/themes/lpt/assets/index.31d6c.js",
+  "index.woff": "wp-content/themes/lpt/assets/fonts/86e01ec5f1864558b3c1.woff",
+  "index.woff2": "wp-content/themes/lpt/assets/fonts/74e879a05ca9947f673f.woff2",
+  "node_modules/@fontsource/signika/files/signika-latin-400-normal.woff2": "wp-content/themes/lpt/assets/fonts/74e879a05ca9947f673f.woff2",
+  "node_modules/@fontsource/signika/files/signika-latin-400-normal.woff": "wp-content/themes/lpt/assets/fonts/86e01ec5f1864558b3c1.woff"
 }

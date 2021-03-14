@@ -6,6 +6,7 @@ use App\Igniters\AssetsIgniter;
 use App\Igniters\CoursesIgniter;
 use App\Igniters\MenusIgniter;
 use App\Igniters\PiklistIgniter;
+use App\Igniters\SettingsIgniter;
 use App\Support\Environment;
 
 require_once __DIR__ . '/../../../vendor/autoload.php';
@@ -17,5 +18,6 @@ $theme->ignite([
 	AssetsIgniter::class,
 	MenusIgniter::class,
 	PiklistIgniter::class,
+	SettingsIgniter::class,
 	CoursesIgniter::class,
 ]);
