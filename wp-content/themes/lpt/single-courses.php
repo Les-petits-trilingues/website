@@ -30,16 +30,18 @@ if (have_posts()):
 			<section class="container m-auto">
 				<h2 class="text-4xl mt-16 mb-10"><?= $section["title"] ?></h2>
 				<p class="mb-6"><?= $section["description"] ?></p>
-				<ul class="flex flex-wrap items-stretch -mx-3">
-					<?php foreach ($section["cards"] as $card) : ?>
-						<li class="bg-beige mx-3 px-8 py-6 flex-1 rounded-xl">
-							<img class="mb-6" src="<?= $card["images"][0] ?>" alt=""/>
-							<h3 class="text-2xl"><?= $card[Localization::suffix("title")] ?></h3>
-							<p class="mb-4 text-lg"><?= $card[Localization::suffix("subtitle")] ?></p>
-							<p class="text-sm"><?= $card[Localization::suffix("description")] ?></p>
-						</li>
-					<?php endforeach; ?>
-				</ul>
+				<?php foreach (array_chunk($section["cards"], 3) as $chunk) : ?>
+					<ul class="flex flex-wrap items-stretch -mx-3 mb-6">
+						<?php foreach ($chunk as $card) : ?>
+							<li class="bg-beige mx-3 px-8 py-6 flex-1 rounded-xl">
+								<img class="mb-6" src="<?= $card["images"][0] ?>" alt=""/>
+								<h3 class="text-xl"><?= $card[Localization::suffix("title")] ?></h3>
+								<p class="mb-4 text-lg"><?= $card[Localization::suffix("subtitle")] ?></p>
+								<p class="text-sm"><?= $card[Localization::suffix("description")] ?></p>
+							</li>
+						<?php endforeach; ?>
+					</ul>
+				<?php endforeach; ?>
 			</section>
 		<?php endforeach; ?>
 

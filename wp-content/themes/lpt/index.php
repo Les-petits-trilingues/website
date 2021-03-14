@@ -30,7 +30,6 @@ use App\Proxies\CoursePost;
 				<ul class="placesList text-sm mb-12">
 					<li class="inline-block">Belleville</li>
 					<li class="inline-block">Place d’Italie</li>
-					<li class="inline-block">Marais</li>
 					<li class="inline-block">Aubervilliers</li>
 				</ul>
 				<p class="px-4 mb-14 md:text-xl">
@@ -71,8 +70,8 @@ use App\Proxies\CoursePost;
 			</div>
 		</div>
 	</section>
-	<section class="pt-8 px-4" id="courses">
-		<h2 class="sm:mt-32 mb-4 text-center font-bold text-4xl">课程介绍</h2>
+	<section class="pt-8 px-4">
+		<h2 id="courses" class="sm:mt-32 mb-4 text-center font-bold text-4xl">课程介绍</h2>
 		<ul class="m-auto flex-wrap sm:max-w-4xl sm:flex">
 			<?php
 			$courses = CoursePost::fetchForHomepage();

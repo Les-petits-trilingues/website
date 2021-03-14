@@ -11,7 +11,14 @@ module.exports = ({production}) => {
 	// Fix for webpack not setting NODE_ENV, preventing tailwind from purging css
 	process.env.NODE_ENV = production ? "production" : "development";
 
-	plugins.push(new CleanWebpackPlugin({cleanOnceBeforeBuildPatterns: ["*.js", "*.css", "manifest.json"]}));
+	plugins.push(new CleanWebpackPlugin({
+		cleanOnceBeforeBuildPatterns: [
+			"fonts/*",
+			"*.js",
+			"*.css",
+			"manifest.json",
+		],
+	}));
 
 	if (production) {
 		plugins.push(new MiniCssExtractPlugin({filename: '[name].[contenthash:5].css'}));
@@ -27,20 +34,21 @@ module.exports = ({production}) => {
 		output: {
 			filename: production ? '[name].[contenthash:5].js' : '[name].js',
 			path: path.resolve(__dirname, 'wp-content/themes/lpt/assets/'),
-			publicPath: "",
+			publicPath: "wp-content/themes/lpt/assets/",
 		},
 		stats: "normal",
 		devServer: {
 			index: '',
 			port: 3002,
 			overlay: true,
-			contentBase: path.join(__dirname, 'themes/lpt/assets'),
+			contentBase: path.join(__dirname),
 			publicPath: '/wp-content/themes/lpt/assets',
 			proxy: {
 				context: () => true,
 				target: "http://localhost:8000",
 				changeOrigin: true,
-			}
+			},
+			writeToDisk: true,
 		},
 		module: {
 			rules: [
@@ -70,6 +78,13 @@ module.exports = ({production}) => {
 						},
 					],
 				},
+				{
+					test: /\.(woff|woff2)$/,
+					type: "asset/resource",
+					generator: {
+						filename: "fonts/[contenthash][ext]"
+					}
+				}
 			],
 		},
 		plugins: [

@@ -58,7 +58,12 @@ module.exports = {
 		},
 		extend: {},
 		fontFamily: {
-			sans: ['"Source Han Sans SC"', '"Microsoft Yahei UI"', "sans-serif"]
+			sans: [
+				'Signika',
+				'"Source Han Sans SC"',
+				'"Microsoft Yahei UI"',
+				"sans-serif",
+			]
 		}
 	},
 	variants: {
