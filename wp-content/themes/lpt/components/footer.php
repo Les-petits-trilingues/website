@@ -5,6 +5,7 @@
  */
 
 use App\Core\Localization;
+use App\Support\Arr;
 use App\Support\Manifest;
 
 ?>
@@ -25,18 +26,17 @@ use App\Support\Manifest;
 		<div class="sm:flex-auto">
 			<div class="mx-8 sm:m-0 sm:flex flex-row">
 				<div class="sm:w-1/2">
-					<h3 class="font-bold text-xl mb-6"><?= t("address") ?></h3>
-					<ul class="mb-12 sm:mb-8 sm:text-sm">
-						<?php foreach (getThemeMenu(Localization::suffix("adresses")) as $item) : ?>
-							<li class="mb-8 sm:mb-4">
-								<?= $item->post_title ?><br/>
-								<?= $item->description ?>
-							</li>
-						<?php endforeach; ?>
-					</ul>
+					<?php foreach (Arr::wrap(getThemeMenu(Localization::suffix("footer_left"))) as $item) : ?>
+						<h3 class="font-bold text-xl mb-6"><?= $item->post_title ?></h3>
+						<ul class="mb-12 sm:mb-8 sm:text-sm">
+							<?php foreach ($item->getChildren() as $child) : ?>
+								<li class="mb-4 sm:mb-2"><?= $child->post_title ?></li>
+							<?php endforeach; ?>
+						</ul>
+					<?php endforeach; ?>
 				</div>
 				<div class="sm:w-1/2">
-					<?php foreach (getThemeMenu(Localization::suffix("contacts")) as $item) : ?>
+					<?php foreach (Arr::wrap(getThemeMenu(Localization::suffix("footer_right"))) as $item) : ?>
 						<h3 class="font-bold text-xl mb-6"><?= $item->post_title ?></h3>
 						<ul class="mb-12 sm:mb-8 sm:text-sm">
 							<?php foreach ($item->getChildren() as $child) : ?>
