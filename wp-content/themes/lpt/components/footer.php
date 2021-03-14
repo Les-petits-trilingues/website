@@ -69,4 +69,4 @@ use App\Support\Manifest;
 </footer>
 
 <?php wp_footer(); ?>
-<script src="<?= asset(Manifest::instance()->getAsset("index.js")) ?>"></script>
+<script src="<?= Manifest::instance()->getAsset("index.js") ?>"></script>
