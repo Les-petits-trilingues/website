@@ -22,7 +22,11 @@ if (! function_exists("dump")) {
 			$styles_str = join(";", $styles);
 
 			echo "<pre style='$styles_str'>";
-			echo preg_replace("/^\s{4}/m", "  ", print_r($arg, true));
+			if(is_scalar($arg)) {
+				var_dump($arg);
+			} else {
+				echo preg_replace("/^\s{4}/m", "  ", print_r($arg, true));
+			}
 			echo "</pre>";
 		}
 	}
