@@ -24,7 +24,7 @@ use App\Support\Manifest;
 			<h2 class="font-bold text-center text-2xl mb-3 sm:text-left">LPT三语宝贝</h2>
 			<ul>
 				<?php
-				$settingsOptions = get_option('lpt_social_networks') ?: [];
+				$settingsOptions = option('lpt_social_networks', []);
 
 				foreach (SettingsIgniter::$socials as $key => $label) {
 					if (! empty($link = $settingsOptions["{$key}_link"] ?? null)) {

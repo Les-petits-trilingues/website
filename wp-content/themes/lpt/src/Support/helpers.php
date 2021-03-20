@@ -22,7 +22,7 @@ if (! function_exists("dump")) {
 			$styles_str = join(";", $styles);
 
 			echo "<pre style='$styles_str'>";
-			if(is_scalar($arg)) {
+			if (is_scalar($arg)) {
 				var_dump($arg);
 			} else {
 				echo preg_replace("/^\s{4}/m", "  ", print_r($arg, true));
@@ -150,8 +150,33 @@ if (! function_exists("getThemeMenu")) {
 }
 
 if (! function_exists("t")) {
-	function t(string $key): string
+	/**
+	 * @param string $key
+	 * @param bool $fromOptions If true, use key to fetch translation from options
+	 * @param string $default Only works when taking from options
+	 *
+	 * @return mixed
+	 */
+	function t(string $key, bool $fromOptions = false, $default = null)
 	{
+		if ($fromOptions) {
+			return option(Localization::suffix($key), $default);
+		}
+
 		return Localization::trans($key);
+	}
+}
+
+if (! function_exists("option")) {
+	/**
+	 * @param string $key "optionKey.fieldKey" or "optionKey"
+	 * @param mixed|null $default
+	 *
+	 * @return mixed|null
+	 */
+	function option(string $key, $default = null)
+	{
+		$segments = explode(".", $key);
+		return Theme::getInstance()->getOption($segments[0], $segments[1] ?? null, $default);
 	}
 }

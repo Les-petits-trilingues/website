@@ -26,35 +26,27 @@ use App\Proxies\CoursePost;
 				     class="h-24 m-auto mb-8 sm:hidden"
 				     alt="Logo de LPT (Les Petits Trilingues)"
 				/>
-				<h1 class="text-5xl mb-6 font-bold">巴黎三语宝贝</h1>
+
+				<h1 class="text-5xl mb-6 font-bold">
+					<?= t("lpt_homepage.title", true, "巴黎三语宝贝") ?>
+				</h1>
+
 				<ul class="placesList text-sm mb-12">
-					<li class="inline-block">Belleville</li>
-					<li class="inline-block">Place d’Italie</li>
-					<li class="inline-block">Aubervilliers</li>
+					<?php foreach (t("lpt_homepage.schools", true, []) as $school) : ?>
+						<li class="inline-block"><?= $school ?></li>
+					<?php endforeach; ?>
 				</ul>
+
 				<p class="px-4 mb-14 md:text-xl">
-					我们来自法国巴黎，是一所致力于<strong class="text-red">中英法</strong>三语教学的国际语言学校。
+					<?= t("lpt_homepage.description", true) ?>
 				</p>
 				<ul class="flex flex-wrap text-center mb-8 px-4">
-					<li class="w-1/2 sm:w-1/4 mb-8">
-						<span class="text-red font-bold text-xl">7</span>年<br>
-						三语教学经验
-					</li>
-					<li class="w-1/2 sm:w-1/4 mb-8">
-						<span class="text-red font-bold text-xl">25</span>名<br>
-						主力中美法老师
-					</li>
-					<li class="w-1/2 sm:w-1/4 mb-8">
-						<span class="text-red font-bold text-xl">160+</span><br>
-						中英美夏令营营员
-					</li>
-					<li class="w-1/2 sm:w-1/4 mb-8">
-						<span class="text-red font-bold text-xl">1&nbsp;000+</span><br>
-						在校学员/年
-					</li>
+					<?php foreach (t("lpt_homepage.bestValues", true, []) as $item) : ?>
+						<li class="w-1/2 sm:w-1/4 mb-8"><?= $item ?></li>
+					<?php endforeach; ?>
 				</ul>
 				<a href="https://tools.lpt.ovh/onboarding?locale=<?= theme()->getLocale() ?>" class="inline-block rounded-xl bg-orange text-xl text-white px-6 py-2">
-					开始注册
+					<?= t("lpt_homepage.registrationButton", true, "开始注册") ?>
 				</a>
 			</div>
 			<div class="mx-4 text-center">
@@ -63,15 +55,17 @@ use App\Proxies\CoursePost;
 					     class="rounded-md mb-3"
 					     alt="Un groupe d'enfant souriant prend la pose"
 					/>
-<!--					<figcaption class="text-sm text-center sm:text-left">-->
-<!--						Visite du musée de l’imprimerie à Hanzhou, Chine-->
-<!--					</figcaption>-->
+					<figcaption class="text-sm text-center sm:text-left">
+						<?= t("lpt_homepage.imageCaption", true) ?>
+					</figcaption>
 				</figure>
 			</div>
 		</div>
 	</section>
 	<section class="pt-8 px-4">
-		<h2 id="courses" class="sm:mt-32 mb-4 text-center font-bold text-4xl">课程介绍</h2>
+		<h2 id="courses" class="sm:mt-32 mb-4 text-center font-bold text-4xl">
+			<?= t("lpt_homepage.coursesTitle", true, "课程介绍") ?>
+		</h2>
 		<ul class="m-auto flex-wrap sm:max-w-4xl sm:flex">
 			<?php
 			$courses = CoursePost::fetchForHomepage();

@@ -28,19 +28,21 @@ use App\Core\Localization;
 		</ul>
 	</nav>
 
-<!--	<ul class="hidden sm:flex items-center">-->
-<!--		<li class="inline-block mr-4">-->
-<!--			<a href="?lang=fr">-->
-<!--				<img src="--><?//= asset("pictos/flags/fr.svg") ?><!--" alt="">-->
-<!--				<span class="hidden">Français - 法语</span>-->
-<!--			</a>-->
-<!--		</li>-->
-<!--		<li class="inline-block">-->
-<!--			<a href="?lang=zh">-->
-<!--				<img src="--><?//= asset("pictos/flags/cn.svg") ?><!--" alt="">-->
-<!--				<span class="hidden">Chinois - 中文</span>-->
-<!--			</a>-->
-<!--		</li>-->
-<!--	</ul>-->
+	<?php if (option("lpt_general.activate_fr", false) === "1"): ?>
+		<ul class="hidden sm:flex items-center">
+			<li class="inline-block mr-4">
+				<a href="?lang=fr">
+					<img src="<?= asset("pictos/flags/fr.svg") ?>" alt="">
+					<span class="hidden">Français - 法语</span>
+				</a>
+			</li>
+			<li class="inline-block">
+				<a href="?lang=zh">
+					<img src="<?= asset("pictos/flags/cn.svg") ?>" alt="">
+					<span class="hidden">Chinois - 中文</span>
+				</a>
+			</li>
+		</ul>
+	<?php endif; ?>
 
 </header>

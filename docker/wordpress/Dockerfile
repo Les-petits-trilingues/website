@@ -1,5 +1,7 @@
 FROM wordpress:5.6-fpm-alpine
 
+RUN docker-php-ext-enable opcache
+
 # [PHP]
 RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
 COPY ./docker/wordpress/php/99-custom.ini /usr/local/etc/php/conf.d/99-custom.ini
