@@ -150,8 +150,19 @@ if (! function_exists("getThemeMenu")) {
 }
 
 if (! function_exists("t")) {
-	function t(string $key): string
+	/**
+	 * @param string $key
+	 * @param bool $fromOptions If true, use key to fetch translation from options
+	 * @param string $default Only works when taking from options
+	 *
+	 * @return mixed
+	 */
+	function t(string $key, bool $fromOptions = false, $default = null)
 	{
+		if ($fromOptions) {
+			return option(Localization::suffix($key), $default);
+		}
+
 		return Localization::trans($key);
 	}
 }
