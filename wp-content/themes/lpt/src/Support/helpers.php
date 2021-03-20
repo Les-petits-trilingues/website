@@ -22,7 +22,7 @@ if (! function_exists("dump")) {
 			$styles_str = join(";", $styles);
 
 			echo "<pre style='$styles_str'>";
-			if(is_scalar($arg)) {
+			if (is_scalar($arg)) {
 				var_dump($arg);
 			} else {
 				echo preg_replace("/^\s{4}/m", "  ", print_r($arg, true));
@@ -153,5 +153,35 @@ if (! function_exists("t")) {
 	function t(string $key): string
 	{
 		return Localization::trans($key);
+	}
+}
+
+if (! function_exists("option")) {
+	/**
+	 * @noinspection PhpUndefinedFunctionInspection
+	 *
+	 * @param string $key "optionKey.fieldKey" or "optionKey"
+	 * @param mixed|null $default
+	 *
+	 * @return mixed|null
+	 * @todo (elie): cache returned options inside an array
+	 */
+	function option(string $key, $default = null)
+	{
+		$segments = explode(".", $key);
+		$optionKey = $segments[0];
+		$fieldKey = $segments[1] ?? null;
+
+		$options = get_option($optionKey);
+
+		if (empty($options)) {
+			return $default;
+		}
+
+		if (empty($fieldKey)) {
+			return $options;
+		}
+
+		return $options[$fieldKey] ?? $default;
 	}
 }
