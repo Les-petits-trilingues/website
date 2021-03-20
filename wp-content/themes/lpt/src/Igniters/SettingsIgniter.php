@@ -16,22 +16,42 @@ final class SettingsIgniter implements IgniterInterface
 	function wpFilters(): void
 	{
 		add_filter('piklist_admin_pages', function ($pages) {
-			$pages[] = [
-				'page_title' => "Social networks",
-				'menu_title' => "Socials",
-				'sub_menu' => 'options-general.php',
-				'capability' => 'manage_options',
-				'menu_slug' => 'custom_settings',
-				'setting' => 'lpt_social_networks',
-				'menu_icon' => 'dashicons-rest-api',
-				'page_icon' => 'dashicons-rest-api',
-				'single_line' => true,
-				'default_tab' => 'Basic',
-				'save_text' => 'Save',
-			];
+			$pages[] = $this->lptTopLevel();
+			$pages[] = $this->lptSocialPage();
 
 			return $pages;
 		});
+	}
+
+
+	private function lptTopLevel(): array
+	{
+		return [
+			'page_title' => "LPT Website",
+			'menu_title' => "LPT",
+			'capability' => 'manage_options',
+			'menu_slug' => 'lpt',
+			'setting' => 'lpt_general',
+			'menu_icon' => 'dashicons-edit',
+			'page_icon' => 'dashicons-edit',
+			'single_line' => true,
+			'save_text' => 'Save',
+		];
+	}
+
+
+	private function lptSocialPage(): array
+	{
+		return [
+			'page_title' => "Social networks",
+			'menu_title' => "Socials",
+			'sub_menu' => 'lpt',
+			'capability' => 'manage_options',
+			'menu_slug' => 'lpt-socials',
+			'setting' => 'lpt_social_networks',
+			'single_line' => true,
+			'save_text' => 'Save',
+		];
 	}
 
 
