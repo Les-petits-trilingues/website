@@ -158,30 +158,14 @@ if (! function_exists("t")) {
 
 if (! function_exists("option")) {
 	/**
-	 * @noinspection PhpUndefinedFunctionInspection
-	 *
 	 * @param string $key "optionKey.fieldKey" or "optionKey"
 	 * @param mixed|null $default
 	 *
 	 * @return mixed|null
-	 * @todo (elie): cache returned options inside an array
 	 */
 	function option(string $key, $default = null)
 	{
 		$segments = explode(".", $key);
-		$optionKey = $segments[0];
-		$fieldKey = $segments[1] ?? null;
-
-		$options = get_option($optionKey);
-
-		if (empty($options)) {
-			return $default;
-		}
-
-		if (empty($fieldKey)) {
-			return $options;
-		}
-
-		return $options[$fieldKey] ?? $default;
+		return Theme::getInstance()->getOption($segments[0], $segments[1] ?? null, $default);
 	}
 }

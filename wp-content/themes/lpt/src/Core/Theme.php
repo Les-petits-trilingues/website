@@ -9,6 +9,7 @@ final class Theme
 {
 	private static ?Theme $_instance = null;
 	private $locale;
+	private $options = [];
 
 
 	private function __construct() { }
@@ -102,5 +103,34 @@ final class Theme
 			$igniter->wpActions();
 		}
 		return $this;
+	}
+
+
+	/**
+	 * @param string $optionKey The key of the option
+	 * @param string|null $fieldKey The key of the field to take from the option
+	 * @param null $default Fallback value
+	 *
+	 * @return mixed|null Returns the whole option if $field not set, otherwise the field value. If the field value does
+	 *   not exists, falls back to the default value.
+	 * @noinspection PhpUndefinedFunctionInspection
+	 */
+	public function getOption(string $optionKey, string $fieldKey = null, $default = null)
+	{
+		if (! isset($this->options[$optionKey])) {
+			$this->options[$optionKey] = get_option($optionKey) ?? null;
+		}
+
+		$option = $this->options[$optionKey];
+
+		if (empty($option)) {
+			return $default;
+		}
+
+		if (is_null($fieldKey)) {
+			return $option;
+		}
+
+		return $option[$fieldKey] ?? $default;
 	}
 }
