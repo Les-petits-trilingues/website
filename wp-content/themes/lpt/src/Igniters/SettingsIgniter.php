@@ -16,7 +16,8 @@ final class SettingsIgniter implements IgniterInterface
 	function wpFilters(): void
 	{
 		add_filter('piklist_admin_pages', function ($pages) {
-			$pages[] = $this->lptTopLevel();
+			$pages[] = $this->lptTopLevelPage();
+			$pages[] = $this->lptHomepagePage();
 			$pages[] = $this->lptSocialPage();
 
 			return $pages;
@@ -24,7 +25,7 @@ final class SettingsIgniter implements IgniterInterface
 	}
 
 
-	private function lptTopLevel(): array
+	private function lptTopLevelPage(): array
 	{
 		return [
 			'page_title' => "LPT Website",
@@ -34,6 +35,21 @@ final class SettingsIgniter implements IgniterInterface
 			'setting' => 'lpt_general',
 			'menu_icon' => 'dashicons-edit',
 			'page_icon' => 'dashicons-edit',
+			'single_line' => true,
+			'save_text' => 'Save',
+		];
+	}
+
+
+	private function lptHomepagePage(): array
+	{
+		return [
+			'page_title' => "Homepage",
+			'menu_title' => "Homepage",
+			'sub_menu' => 'lpt',
+			'capability' => 'manage_options',
+			'menu_slug' => 'lpt-homepage',
+			'setting' => 'lpt_homepage',
 			'single_line' => true,
 			'save_text' => 'Save',
 		];
