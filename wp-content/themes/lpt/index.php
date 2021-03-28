@@ -7,6 +7,7 @@
 /** @noinspection PhpUndefinedClassInspection */
 
 use App\Proxies\CoursePost;
+use App\Core\Localization;
 
 ?>
 <!doctype html>
@@ -45,7 +46,10 @@ use App\Proxies\CoursePost;
 						<li class="w-1/2 sm:w-1/4 mb-8"><?= $item ?></li>
 					<?php endforeach; ?>
 				</ul>
-				<a href="https://tools.lpt.ovh/onboarding?locale=<?= theme()->getLocale() ?>" class="inline-block rounded-xl bg-orange text-xl text-white px-6 py-2">
+				<a
+					href="<?= Localization::suffix("https://tools.lpt.ovh/onboarding", false, "?locale=") ?>"
+					class="inline-block rounded-xl bg-orange text-xl text-white px-6 py-2"
+				>
 					<?= t("lpt_homepage.registrationButton", true, "开始注册") ?>
 				</a>
 			</div>
@@ -84,7 +88,7 @@ use App\Proxies\CoursePost;
 						<h3 class="text-3xl font-bold mb-3 sm:mb-5"><?= $course->getMeta("summup_title") ?></h3>
 						<p class="mb-6 sm:mb-6"><?= $course->getMeta("summup_description") ?></p>
 						<a
-							href="<?= $course->getLink() ?>"
+							href="<?= Localization::suffixUrl($course->getLink()) ?>"
 							class="inline-block p-3 leading-none border border-black rounded-md
 					           hover:bg-gray-200 focus:bg-black focus:text-white"
 						>

@@ -90,6 +90,25 @@ final class Localization
 	}
 
 
+	static public function suffixUrl(string $url, bool $skipDefault = true): string
+	{
+		if ($skipDefault && self::getLocale() === self::getDefaultLocale()) {
+			return $url;
+		}
+
+		return self::addLangToUrl($url, self::getLocale());
+	}
+
+
+	static public function addLangToUrl(string $url, string $locale): string
+	{
+		$locales = join("|", self::getLocales());
+		$cleanUrl = preg_replace("/[?&]lang=($locales)/", "", $url);
+		$delimiter = strpos($cleanUrl, "?") === false ? "?lang=" : "&lang=";
+		return $cleanUrl . $delimiter . $locale;
+	}
+
+
 	/**
 	 * Load a translation bundle.
 	 *
