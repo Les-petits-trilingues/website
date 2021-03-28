@@ -25,9 +25,6 @@ use App\Support\Arr;
 			<a href="<?= $course->register_link ?>" class="inline-block text-xl rounded-xl bg-orange leading-none text-white px-6 py-4">
 				<?= t("subscribe") ?>
 			</a>
-			<span class="block sm:inline-block mx-auto sm:ml-2 mt-2 text-lg">
-					<?= $course->price["value"] ?><?= t("€") ?>/<?= $course->price[Localization::suffix("period")] ?>
-				</span>
 		</div>
 	</div>
 </header>
