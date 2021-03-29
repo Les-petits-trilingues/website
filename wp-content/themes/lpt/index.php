@@ -68,6 +68,21 @@ use App\Core\Localization;
 			</div>
 		</div>
 	</section>
+
+	<section class="pt-8 px-4 sm:max-w-5xl mx-auto">
+		<?php if (! empty($img = option("lpt_homepage.perksImage")[0] ?? null)): ?>
+			<img src="<?= $img ?>" class="rounded-md mb-3" alt=""/>
+		<?php endif; ?>
+		<ul class="flex flex-row flex-wrap sm-mx-6">
+			<?php foreach (t("lpt_homepage.perks", true) as $index => $text): ?>
+				<li class="sm:w-1/5 sm:px-3">
+					<h3 class="text-3xl mb-2"><?= str_pad($index + 1, 2, "0", STR_PAD_LEFT) ?></h3>
+					<p class="leading-tight"><?= $text ?></p>
+				</li>
+			<?php endforeach; ?>
+		</ul>
+	</section>
+
 	<section class="pt-8 px-4">
 		<h2 id="courses" class="sm:mt-32 mb-4 text-center font-bold text-4xl">
 			<?= t("lpt_homepage.coursesTitle", true, "课程介绍") ?>
