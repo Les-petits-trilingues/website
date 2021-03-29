@@ -113,9 +113,20 @@ piklist('field', [
 
 /*
  | ------------------------------------
- | Image caption
+ | Image
  | ------------------------------------
 */
+
+piklist('field', [
+	'type' => 'file',
+	'field' => "image",
+	'label' => "Image",
+	'columns' => 12,
+	"options" => [
+		"button" => "Select image",
+		"save" => "url",
+	],
+]);
 
 piklist('field', [
 	'type' => 'text',

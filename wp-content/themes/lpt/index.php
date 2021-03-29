@@ -54,15 +54,17 @@ use App\Core\Localization;
 				</a>
 			</div>
 			<div class="mx-4 text-center">
-				<figure class=" inline-block">
-					<img src="<?= asset('images/group-students-happy.jpg') ?>"
-					     class="rounded-md mb-3"
-					     alt="Un groupe d'enfant souriant prend la pose"
-					/>
-					<figcaption class="text-sm text-center sm:text-left">
-						<?= t("lpt_homepage.imageCaption", true) ?>
-					</figcaption>
-				</figure>
+				<?php if (! empty($img = option("lpt_homepage.image")[0] ?? null)): ?>
+					<figure class=" inline-block">
+						<img src="<?= $img ?>"
+						     class="rounded-md mb-3"
+						     alt="Un groupe d'enfant souriant prend la pose"
+						/>
+						<figcaption class="text-sm text-center sm:text-left">
+							<?= t("lpt_homepage.imageCaption", true) ?>
+						</figcaption>
+					</figure>
+				<?php endif; ?>
 			</div>
 		</div>
 	</section>
