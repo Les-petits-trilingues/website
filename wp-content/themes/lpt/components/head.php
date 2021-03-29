@@ -22,10 +22,13 @@ if (! is_front_page()) {
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	<?php
-	if (CoursePost::validType($post)) {
-		$locale = Localization::is("fr") ? "zh" : "fr";
-		$url = $locale === "zh" ? $proxyPost->getLink() : add_query_arg('lang', "fr", $proxyPost->getLink());
-		echo "<link rel=\"alternate\" hreflang=\"$locale\" href=\"$url\" />";
+	if (is_home() || CoursePost::validType($post)) {
+		$locales = join("|", Localization::getLocales());
+		$defaultUrl = preg_replace("/[?&]lang=($locales)/", "", $_SERVER["REQUEST_URI"]);
+		$defaultUrl .= strpos($defaultUrl, "?") === false ? "?" : "&";
+		foreach (Localization::getLocales() as $locale) {
+			echo "<link rel=\"alternate\" href=\"{$defaultUrl}lang=$locale\" hreflang=\"$locale\">";
+		}
 	}
 	?>
 	<?php wp_head(); ?>

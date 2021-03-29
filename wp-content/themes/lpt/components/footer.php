@@ -34,7 +34,16 @@ use App\Support\Manifest;
 				}
 				?>
 			</ul>
-			<img class="mx-auto md:mx-0 w-24 mt-8" src="<?= asset("images/lpt-qr-code.jpg") ?>" alt="QR Code Wechat de LPT"/>
+			<a href="/">
+				<?php if (! empty($qr = (option("lpt_general.wechatQr")[0] ?? null))): ?>
+					<img class="mx-auto md:mx-0 w-24 mt-8" src="<?= $qr ?>" alt="QR Code Wechat de LPT"/>
+				<?php else: ?>
+					<img
+						class="mx-auto md:mx-0 w-24 mt-8" src="<?= asset("images/lpt-qr-code.jpg") ?>"
+						alt="QR Code Wechat de LPT"
+					/>
+				<?php endif; ?>
+			</a>
 			<hr class="border-white mx-8 my-8 sm:hidden"/>
 		</div>
 		<div class="sm:flex-auto">
@@ -69,4 +78,4 @@ use App\Support\Manifest;
 </footer>
 
 <?php wp_footer(); ?>
-<script src="<?= Manifest::instance()->getAsset("index.js") ?>"></script>
+<script src="<?= Manifest::instance()->getAsset("index.js", asset("/index.js")) ?>"></script>

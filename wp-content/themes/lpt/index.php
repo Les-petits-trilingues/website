@@ -7,6 +7,7 @@
 /** @noinspection PhpUndefinedClassInspection */
 
 use App\Proxies\CoursePost;
+use App\Core\Localization;
 
 ?>
 <!doctype html>
@@ -45,23 +46,43 @@ use App\Proxies\CoursePost;
 						<li class="w-1/2 sm:w-1/4 mb-8"><?= $item ?></li>
 					<?php endforeach; ?>
 				</ul>
-				<a href="https://tools.lpt.ovh/onboarding?locale=<?= theme()->getLocale() ?>" class="inline-block rounded-xl bg-orange text-xl text-white px-6 py-2">
+				<a
+					href="<?= Localization::suffix("https://tools.lpt.ovh/onboarding", false, "?locale=") ?>"
+					class="bigButton"
+				>
 					<?= t("lpt_homepage.registrationButton", true, "开始注册") ?>
 				</a>
 			</div>
 			<div class="mx-4 text-center">
-				<figure class=" inline-block">
-					<img src="<?= asset('images/group-students-happy.jpg') ?>"
-					     class="rounded-md mb-3"
-					     alt="Un groupe d'enfant souriant prend la pose"
-					/>
-					<figcaption class="text-sm text-center sm:text-left">
-						<?= t("lpt_homepage.imageCaption", true) ?>
-					</figcaption>
-				</figure>
+				<?php if (! empty($img = option("lpt_homepage.image")[0] ?? null)): ?>
+					<figure class=" inline-block">
+						<img src="<?= $img ?>"
+						     class="rounded-md mb-3"
+						     alt="Un groupe d'enfant souriant prend la pose"
+						/>
+						<figcaption class="text-sm text-center sm:text-left">
+							<?= t("lpt_homepage.imageCaption", true) ?>
+						</figcaption>
+					</figure>
+				<?php endif; ?>
 			</div>
 		</div>
 	</section>
+
+	<section class="pt-8 px-4 sm:max-w-5xl mx-auto">
+		<?php if (! empty($img = option("lpt_homepage.perksImage")[0] ?? null)): ?>
+			<img src="<?= $img ?>" class="rounded-md mb-3" alt=""/>
+		<?php endif; ?>
+		<ul class="flex flex-row flex-wrap sm-mx-6">
+			<?php foreach (t("lpt_homepage.perks", true) as $index => $text): ?>
+				<li class="sm:w-1/5 sm:px-3">
+					<h3 class="text-3xl mb-2"><?= str_pad($index + 1, 2, "0", STR_PAD_LEFT) ?></h3>
+					<p class="leading-tight"><?= $text ?></p>
+				</li>
+			<?php endforeach; ?>
+		</ul>
+	</section>
+
 	<section class="pt-8 px-4">
 		<h2 id="courses" class="sm:mt-32 mb-4 text-center font-bold text-4xl">
 			<?= t("lpt_homepage.coursesTitle", true, "课程介绍") ?>
@@ -84,7 +105,7 @@ use App\Proxies\CoursePost;
 						<h3 class="text-3xl font-bold mb-3 sm:mb-5"><?= $course->getMeta("summup_title") ?></h3>
 						<p class="mb-6 sm:mb-6"><?= $course->getMeta("summup_description") ?></p>
 						<a
-							href="<?= $course->getLink() ?>"
+							href="<?= Localization::suffixUrl($course->getLink()) ?>"
 							class="inline-block p-3 leading-none border border-black rounded-md
 					           hover:bg-gray-200 focus:bg-black focus:text-white"
 						>

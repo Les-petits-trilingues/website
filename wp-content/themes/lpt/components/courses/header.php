@@ -22,12 +22,13 @@ use App\Support\Arr;
 			<?php endforeach; ?>
 		</ul>
 		<div class="text-center sm:text-left">
-			<a href="<?= $course->register_link ?>" class="inline-block text-xl rounded-xl bg-orange leading-none text-white px-6 py-4">
-				<?= t("subscribe") ?>
-			</a>
-			<span class="block sm:inline-block mx-auto sm:ml-2 mt-2 text-lg">
-					<?= $course->price["value"] ?><?= t("€") ?>/<?= $course->price[Localization::suffix("period")] ?>
-				</span>
+			<?php if (! empty($link = $course->register_link)) : ?>
+				<a href="<?= $link ?>" class="bigButton">
+					<?= t("subscribe") ?>
+				</a>
+			<?php else: ?>
+				<div class="px-6 py-4"></div>
+			<?php endif; ?>
 		</div>
 	</div>
 </header>

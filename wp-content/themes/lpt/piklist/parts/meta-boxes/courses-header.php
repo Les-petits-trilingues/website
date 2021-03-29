@@ -36,35 +36,6 @@ piklist("field", [
 ]);
 
 piklist("field", [
-	"type" => "group",
-	"field" => "price",
-	"label" => "Price",
-	"fields" => [
-		[
-			"type" => "text",
-			"field" => "value",
-			"label" => "Value",
-			"columns" => 2,
-			"attributes" => ["placeholder" => 400],
-		],
-		[
-			"type" => "text",
-			"field" => "period",
-			"label" => "Time range",
-			"columns" => 2,
-			"attributes" => ["placeholder" => "年"],
-		],
-		[
-			"type" => "text",
-			"field" => "period_fr",
-			"label" => "Time range (fr)",
-			"columns" => 2,
-			"attributes" => ["placeholder" => "an"],
-		],
-	],
-]);
-
-piklist("field", [
 	"type" => "text",
 	"field" => "register_link",
 	"label" => "Register url",

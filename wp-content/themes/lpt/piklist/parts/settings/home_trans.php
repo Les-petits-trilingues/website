@@ -113,9 +113,20 @@ piklist('field', [
 
 /*
  | ------------------------------------
- | Image caption
+ | Image
  | ------------------------------------
 */
+
+piklist('field', [
+	'type' => 'file',
+	'field' => "image",
+	'label' => "Image",
+	'columns' => 12,
+	"options" => [
+		"button" => "Select image",
+		"save" => "url",
+	],
+]);
 
 piklist('field', [
 	'type' => 'text',
@@ -131,6 +142,38 @@ piklist('field', [
 	'columns' => 12,
 ]);
 
+/*
+ | ------------------------------------
+ | Best values
+ | ------------------------------------
+*/
+
+piklist('field', [
+	'type' => 'file',
+	'field' => "perksImage",
+	'label' => "Best value image",
+	'columns' => 12,
+	"options" => [
+		"button" => "Select image",
+		"save" => "url",
+	],
+]);
+
+piklist('field', [
+	'type' => 'text',
+	'field' => "perks",
+	'label' => "Valeurs ajoutées",
+	'columns' => 12,
+	'add_more' => true
+]);
+
+piklist('field', [
+	'type' => 'text',
+	'field' => "perks_fr",
+	'label' => "Valeurs ajoutées (fr)",
+	'columns' => 12,
+	'add_more' => true
+]);
 
 /*
  | ------------------------------------

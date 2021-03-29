@@ -9,9 +9,7 @@ module.exports = {
 		transform: false,
 		transformOrigin: false,
 		transitionDelay: false,
-		transitionDuration: false,
 		transitionProperty: false,
-		transitionTimingFunction: false,
 		translate: false,
 		rotate: false,
 		scale: false,
@@ -44,10 +42,15 @@ module.exports = {
 			},
 			orange: {
 				DEFAULT: "#f29833",
+				dark: "#b16a23",
 			},
 			red: {
 				DEFAULT: "#d42f2a",
-			}
+			},
+			blue: {
+				DEFAULT: "#378bcb",
+				dark: "#26377A",
+			},
 		},
 		screens: {
 			sm: '640px',
