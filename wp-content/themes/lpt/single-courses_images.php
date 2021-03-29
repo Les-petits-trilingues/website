@@ -31,7 +31,11 @@ if (have_posts()):
 				<ul class="flex flex-wrap justify-center items-stretch -mx-3">
 					<?php foreach ($section["images"] as $image) : ?>
 						<li class="flex-1 py-3">
-							<img class="mx-auto mb-6 max-h-40" src="<?= $image ?>" alt=""/>
+							<?php if (count($section["images"]) === 1): ?>
+								<img class="mx-auto mb-6" src="<?= $image ?>" alt=""/>
+							<?php else: ?>
+								<img class="mx-auto mb-6 max-h-40" src="<?= $image ?>" alt=""/>
+							<?php endif; ?>
 						</li>
 					<?php endforeach; ?>
 				</ul>
