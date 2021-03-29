@@ -48,7 +48,7 @@ use App\Core\Localization;
 				</ul>
 				<a
 					href="<?= Localization::suffix("https://tools.lpt.ovh/onboarding", false, "?locale=") ?>"
-					class="inline-block rounded-xl bg-orange text-xl text-white px-6 py-2"
+					class="bigButton"
 				>
 					<?= t("lpt_homepage.registrationButton", true, "开始注册") ?>
 				</a>

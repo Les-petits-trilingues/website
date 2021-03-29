@@ -1,0 +1,18 @@
+.bigButton {
+	@apply inline-block bg-white px-6 py-3 text-xl rounded-2xl;
+	@apply duration-100 ease-out border-2 border-blue text-blue-dark;
+	box-shadow: 0 6px 0 #378bcb;
+	transform: translate(0, 0);
+	transition-property: transform, box-shadow;
+}
+
+.bigButton:focus,
+.bigButton:hover {
+	transform: translate(0, 3px);
+	box-shadow: 0 3px 0 #378bcb;
+}
+
+.bigButton:active {
+	transform: translate(0, 6px);
+	box-shadow: none;
+}

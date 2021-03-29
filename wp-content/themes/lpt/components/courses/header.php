@@ -23,10 +23,7 @@ use App\Support\Arr;
 		</ul>
 		<div class="text-center sm:text-left">
 			<?php if (! empty($link = $course->register_link)) : ?>
-				<a
-					href="<?= $link ?>"
-					class="inline-block text-xl rounded-xl bg-orange leading-none text-white px-6 py-4"
-				>
+				<a href="<?= $link ?>" class="bigButton">
 					<?= t("subscribe") ?>
 				</a>
 			<?php else: ?>
