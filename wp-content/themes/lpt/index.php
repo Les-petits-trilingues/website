@@ -20,6 +20,7 @@ use App\Core\Localization;
 <?php include "components/header.php" ?>
 
 <main>
+	<!-- Header (welcome) -->
 	<section class="pb-8">
 		<div class="container m-auto">
 			<div class="mt-8 mb-16 max-w-2xl m-auto text-center sm:mt-32 sm:mb-36">
@@ -53,36 +54,10 @@ use App\Core\Localization;
 					<?= t("lpt_homepage.registrationButton", true, "开始注册") ?>
 				</a>
 			</div>
-			<div class="mx-4 text-center">
-				<?php if (! empty($img = option("lpt_homepage.image")[0] ?? null)): ?>
-					<figure class=" inline-block">
-						<img src="<?= $img ?>"
-						     class="rounded-md mb-3"
-						     alt="Un groupe d'enfant souriant prend la pose"
-						/>
-						<figcaption class="text-sm text-center sm:text-left">
-							<?= t("lpt_homepage.imageCaption", true) ?>
-						</figcaption>
-					</figure>
-				<?php endif; ?>
-			</div>
 		</div>
 	</section>
 
-	<section class="pt-8 px-4 sm:max-w-5xl mx-auto">
-		<?php if (! empty($img = option("lpt_homepage.perksImage")[0] ?? null)): ?>
-			<img src="<?= $img ?>" class="rounded-md mb-3" alt=""/>
-		<?php endif; ?>
-		<ul class="flex flex-row flex-wrap sm-mx-6">
-			<?php foreach (t("lpt_homepage.perks", true) as $index => $text): ?>
-				<li class="sm:w-1/5 sm:px-3">
-					<h3 class="text-3xl mb-2"><?= str_pad($index + 1, 2, "0", STR_PAD_LEFT) ?></h3>
-					<p class="leading-tight"><?= $text ?></p>
-				</li>
-			<?php endforeach; ?>
-		</ul>
-	</section>
-
+	<!-- Courses list -->
 	<section class="pt-8 px-4">
 		<h2 id="courses" class="sm:mt-32 mb-4 text-center font-bold text-4xl">
 			<?= t("lpt_homepage.coursesTitle", true, "课程介绍") ?>
@@ -112,6 +87,38 @@ use App\Core\Localization;
 							了解更多
 						</a>
 					</div>
+				</li>
+			<?php endforeach; ?>
+		</ul>
+	</section>
+
+	<!-- Children image -->
+	<section class="pt-8 px-4 sm:max-w-4xl mx-auto">
+		<div class="mx-4 text-center">
+			<?php if (! empty($img = option("lpt_homepage.image")[0] ?? null)): ?>
+				<figure class=" inline-block">
+					<img src="<?= $img ?>"
+					     class="rounded-md mb-3"
+					     alt="Un groupe d'enfant souriant prend la pose"
+					/>
+					<figcaption class="text-sm text-center sm:text-left">
+						<?= t("lpt_homepage.imageCaption", true) ?>
+					</figcaption>
+				</figure>
+			<?php endif; ?>
+		</div>
+	</section>
+
+	<!-- Goals of LPT -->
+	<section class="pt-8 px-4 sm:max-w-5xl mx-auto">
+		<?php if (! empty($img = option("lpt_homepage.perksImage")[0] ?? null)): ?>
+			<img src="<?= $img ?>" class="rounded-md mb-3" alt=""/>
+		<?php endif; ?>
+		<ul class="flex flex-row flex-wrap sm-mx-6">
+			<?php foreach (t("lpt_homepage.perks", true) as $index => $text): ?>
+				<li class="sm:w-1/5 sm:px-3">
+					<h3 class="text-3xl mb-2"><?= str_pad($index + 1, 2, "0", STR_PAD_LEFT) ?></h3>
+					<p class="leading-tight"><?= $text ?></p>
 				</li>
 			<?php endforeach; ?>
 		</ul>
