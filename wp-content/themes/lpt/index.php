@@ -6,8 +6,8 @@
 
 /** @noinspection PhpUndefinedClassInspection */
 
-use App\Proxies\CoursePost;
 use App\Core\Localization;
+use App\Proxies\CoursePost;
 
 ?>
 <!doctype html>
@@ -114,6 +114,7 @@ use App\Core\Localization;
 		<?php if (! empty($img = option("lpt_homepage.perksImage")[0] ?? null)): ?>
 			<img src="<?= $img ?>" class="rounded-md mb-3" alt=""/>
 		<?php endif; ?>
+		<?php /*
 		<ul class="flex flex-row flex-wrap sm-mx-6">
 			<?php foreach (t("lpt_homepage.perks", true) as $index => $text): ?>
 				<li class="sm:w-1/5 sm:px-3">
@@ -122,6 +123,7 @@ use App\Core\Localization;
 				</li>
 			<?php endforeach; ?>
 		</ul>
+  */ ?>
 	</section>
 </main>
 
