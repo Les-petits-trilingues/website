@@ -93,20 +93,16 @@ use App\Proxies\CoursePost;
 	</section>
 
 	<!-- Children image -->
-	<section class="pt-8 px-4 sm:max-w-4xl mx-auto">
-		<div class="mx-4 text-center">
-			<?php if (! empty($img = option("lpt_homepage.image")[0] ?? null)): ?>
-				<figure class=" inline-block">
-					<img src="<?= $img ?>"
-					     class="rounded-md mb-3"
-					     alt="Un groupe d'enfant souriant prend la pose"
-					/>
-					<figcaption class="text-sm text-center sm:text-left">
-						<?= t("lpt_homepage.imageCaption", true) ?>
-					</figcaption>
-				</figure>
-			<?php endif; ?>
-		</div>
+	<section class="pt-8 px-4 max-w-3xl mx-auto">
+			<iframe
+				width="672"
+				height="400"
+				class="w-full"
+				src="https://www.youtube-nocookie.com/embed/OpeUwqRrkGo?controls=0"
+				frameborder="0"
+				allow="autoplay; clipboard-write; encrypted-media; picture-in-picture"
+				allowfullscreen
+			></iframe>
 	</section>
 
 	<!-- Goals of LPT -->
